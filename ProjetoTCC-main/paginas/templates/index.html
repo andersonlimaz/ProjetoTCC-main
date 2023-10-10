@@ -1,0 +1,292 @@
+{% load static %}
+
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block titulo %}
+    <title>Home</title>
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body>
+  <!-- ======== header started ========= -->
+  <header>
+    <div class="my-nav">
+      <div class="container">
+        <div class="row">
+          <div class="nav-items">
+            <div class="menu-toggle">
+              <div class="menu-hamburger"></div>
+            </div>
+            <div class="logo">
+              <img src="{% static 'img/logo.png' %}">
+            </div>
+            <div class="menu-items">
+              <div class="menu">
+                <ul>
+                  <li><a href="{% url 'inicio' %}">Home</a></li>
+                  <li><a href="{% url 'doe' %}">Doe</a></li>
+             
+                  <li><a href="{% url 'blog' %}">Blog</a></li>
+                  <li><a href="{% url 'contato' %}">Contato</a></li>
+                 <li><a href="{% url 'formulario' %}">Formulario</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% block conteudo %}
+  <main class="charity-01-main">
+
+      <!-- ======== banner started ========= -->
+    <section class="banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="wrapper">
+              <div class="content">             
+   
+                <h1>Site de Doação</h1>
+                <p>Somos uma organização comprometida em fazer a diferença na vida das pessoas. Nossa missão é proporcionar apoio e assistência a comunidades carentes 
+                  </p>
+                <div class="btn-002">
+                  <ul>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Doe</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="img-wrapper">
+              <div class="banner-img">
+                <img src="static/img/slider/donation-02.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== bg-02-b started ========= -->
+
+    <section class="bg-02-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="head-001">
+              <h2>About Us Charity</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisnisi.</p>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12 ">
+            <div class="_do_er_xs">
+              <div class="_kl_de_s">
+                <img src="{% static 'img/slider/donation-01.png' %}">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-12">
+            <div class="_do_er_xs">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehen derit in voluptate velit esse cillum dolore
+                eu fugiat nulla pariatur.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation they ullamco.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation they ullamco.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======== services started ========= -->
+
+    <section class="services-01">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="head-01">
+              <h2>Our Services</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-bone"></i>
+              <h3>Raise Fund for Healthy Food</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-graduation-cap"></i>
+              <h3>Education for poor children </h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-child"></i>
+              <h3>Promoting the Rights of Children</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-box-heart"></i>
+              <h3>Massive Donation to Poor</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-hands-heart"></i>
+              <h3>Huge help to homeless pupil</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-home"></i>
+              <h3>Let’s build some homes.</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-hand-holding-water"></i>
+              <h3>Pure Water For Poor People</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6">
+            <div class="ser-box">
+              <i class="fal fa-heartbeat"></i>
+              <h3>Medical Facilities For Childrens</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+          <div class="_kl_ds_we">
+            <div class="head-footer">
+              <h3>Site de doação </h3>
+              <p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua.</p>
+              <ol>
+                <li><i class="fab fa-facebook-square"></i></li>
+                <li><i class="fab fa-instagram"></i></li>
+                <li><i class="fab fa-twitter-square"></i></li>
+                <li><i class="fab fa-linkedin"></i></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+          <div class="_kl_ds_we">
+            <div class="head-footer">
+              <h3>Services</h3>
+              <ul>
+                <li><i class="fas fa-chevron-right"></i>Huge Help To Homeless Pupil</li>
+                <li><i class="fas fa-chevron-right"></i>Education For Poor Children</li>
+                <li><i class="fas fa-chevron-right"></i>Medical Facilities</li>
+                <li><i class="fas fa-chevron-right"></i>Raise Fund For Healthy Food</li>
+                <li><i class="fas fa-chevron-right"></i>Let’S Build Some Homes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+          <div class="_kl_ds_we">
+            <div class="head-footer">
+              <h3>Quick links</h3>
+              <ul>
+                <li><i class="fas fa-chevron-right"></i>Home</li>
+                <li><i class="fas fa-chevron-right"></i>About Us</li>
+                <li><i class="fas fa-chevron-right"></i>Services</li>
+                <li><i class="fas fa-chevron-right"></i>Blog</li>
+                <li><i class="fas fa-chevron-right"></i>Contact Us</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+          <div class="_kl_ds_we">
+            <div class="head-footer">
+              <h3>find us</h3>
+              <ul class="un-hover">
+                <li><i class="far fa-location"></i>Marthandam</li>
+                <li><i class="fas fa-mobile-alt"></i>+91 9751791203</li>
+                <li><i class="far fa-envelope"></i>sales@smarteyeapps.com</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row _pl_we_sq">
+            <div class="col-12">
+              <div class="last-01">
+                <p>2023 @ Desenvolvido por: Anderson Brito de Lima<a
+                    href="https://github.com/andersonlimaz/projeto-django-main">Github</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</html>
