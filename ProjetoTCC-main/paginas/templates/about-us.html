@@ -1,8 +1,6 @@
-{% extends 'index.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  {% block conteudo %}
   <!DOCTYPE html>
 <html lang="en">
 
@@ -16,22 +14,45 @@
 
     <!-- Title Page-->
     <title>Pagina Doe</title>
-
-    <!-- Icons font CSS-->
     <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
-    <!-- Font special for pages-->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Vendor CSS-->
     <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
-
-    <!-- Main CSS-->
     <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
+
 </head>
 
 <body>
+    <header>
+        <div class="my-nav">
+          <div class="container">
+            <div class="row">
+              <div class="nav-items">
+                <div class="menu-toggle">
+                  <div class="menu-hamburger"></div>
+                </div>
+                <div class="logo">
+                  <img src="{% static 'img/logo.png' %}">
+                </div>
+                <div class="menu-items">
+                  <div class="menu">
+                    <ul>
+                      <li><a href="{% url 'inicio' %}">Home</a></li>
+                      <li><a href="{% url 'doe' %}">Doe</a></li>
+                 
+                      <li><a href="{% url 'blog' %}">Blog</a></li>
+                      <li><a href="{% url 'contato' %}">Contato</a></li>
+                     <li><a href="{% url 'formulario' %}">Formulario</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>    
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
@@ -67,21 +88,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Valor</label>
-                                    <input class="input--style-4" type="number" name="valor" placeholder="Digite o Valor" required>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Telefone</label>
-                                    <input class="input--style-4" type="number" name="phone"placeholder="(xx) xxxx-xxxx" required>
-                                </div>
-                            </div>
-                        </div>
+                        </div>    
+                            <div class="card-body">
+                                <label class="label">Valor</label>
+                                    <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
                         <div class="input-group">
                             <label class="label">Ong Parceiras</label>
                             <div class="rs-select2 js-select-simple select--no-search">
@@ -116,4 +126,3 @@
 </body>
 
 </html>
-{% endblock %}
