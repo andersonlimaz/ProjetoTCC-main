@@ -1,6 +1,6 @@
 
 from django.urls import path 
-from .views import PaginaInicial, Doe, Servicos, Blog, Contato, Formulario, cadastro_ong
+from .views import PaginaInicial, Doe, Servicos, Blog, Contato, Formulario, cadastro_ong, pagamento_ong
 from django.urls import path
 from . import views
 
@@ -16,6 +16,7 @@ urlpatterns = [
 
    
     path('cadastro_ong/', views.cadastro_ong, name='cadastro_ong'),
+    path('pagamento_ong/', views.pagamento_ong, name='pagamento_ong'),
 ]
 
     

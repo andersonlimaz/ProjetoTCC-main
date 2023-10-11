@@ -20,3 +20,9 @@ class ONG(models.Model):
     def __str__(self):
         return self.nome_fantasia  # Isso define como o objeto ONG será representado quando convertido em string
 
+
+class Pagamento(models.Model):
+    forma_pagamento = models.CharField(max_length=255)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    ong_parceiras = models.CharField(max_length=255)
+    data_pagamento = models.DateField()

@@ -92,8 +92,8 @@ DATABASES = {
         'NAME': 'Monitora1',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
-        'HOST': 'localhost',  # Se o PostgreSQL estiver em execução localmente
-        'PORT': '5432',       # Porta padrão do PostgreSQL
+        'HOST': 'localhost',  
+        'PORT': '5432',       
     }
 }
 
