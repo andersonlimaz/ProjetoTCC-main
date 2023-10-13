@@ -8,7 +8,8 @@ from django.db.utils import IntegrityError
 from django.shortcuts import render, redirect
 from .models import ONG, Pagamento
 from django.http import HttpResponse
-
+from decimal import Decimal, InvalidOperation
+from django.contrib import messages
 # Create your views here.
 class PaginaInicial(TemplateView):
     template_name = "index.html"
@@ -27,10 +28,6 @@ class Contato(TemplateView):
     
 class Formulario(TemplateView):
     template_name = "formulario.html"    
-
-
-
-
 
 
 
@@ -78,6 +75,11 @@ def pagamento_ong(request):
         email = request.POST.get('email')
         forma_pagamento = request.POST.get('forma_pagamento')
         valor = request.POST.get('valor')
+        try:
+            valor_decimal = Decimal(valor.replace(',', '.'))  # Converta para Decimal
+        except InvalidOperation:
+            valor_decimal = None 
+
         ong_parceiras = request.POST.get('subject')
 
         if forma_pagamento == 'pix':
@@ -87,32 +89,22 @@ def pagamento_ong(request):
 
         if ong_parceiras == 'Empresa 1':
            ong_parceiras = 'Empresa 1'
+           
         elif ong_parceiras == 'Empresa 2':
             ong_parceiras = 'Empresa 2'
         elif ong_parceiras == 'Empresa 3':
             ong_parceiras = 'Empresa 3'
 
-       
-
-        # Create an instance of the ONG model and save it to the database
-        pagamento = Pagamento(
+        Cadastro_Pagamento = Pagamento.objects.create(            
             nome=nome,
             email=email,
             forma_pagamento=forma_pagamento,
             valor=valor,
-            ong_parceiras=ong_parceiras,
-        )
-        pagamento.save()
-
-        # Set a success message in the session variable
-        request.session['mensagem_sucesso'] = 'Pagamento realizado com sucesso.'
+            ong_parceiras=ong_parceiras) 
+        Cadastro_Pagamento.save()
+        messages.success(request, 'Pagamento realizado com sucesso!')
         
-        # Redirect to a success page (replace 'servicos' with the URL of your success page)
-        return redirect('servicos')
-    else:
-        request.session['mensagem_sucesso'] = 'Pagamento não realizado.'
-
-        return render(request, 'formulario.html')  # Make sure the template name is correct 
+        return redirect('doe')
 
 
 

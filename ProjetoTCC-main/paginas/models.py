@@ -21,8 +21,28 @@ class ONG(models.Model):
         return self.nome_fantasia  # Isso define como o objeto ONG será representado quando convertido em string
 
 
+from django.db import models
+
 class Pagamento(models.Model):
-    forma_pagamento = models.CharField(max_length=255)
-    valor = models.DecimalField(max_digits=10, decimal_places=2)
-    ong_parceiras = models.CharField(max_length=255)
-    data_pagamento = models.DateField()
+    FORMA_PAGAMENTO_CHOICES = [
+        ('pix', 'PIX'),
+        ('boleto', 'Boleto')
+    ]
+
+    ONG_PARCEIRAS_CHOICES = [
+        ('Empresa 1', 'Empresa 1'),
+        ('Empresa 2', 'Empresa 2'),
+        ('Empresa 3', 'Empresa 3')
+    ]
+
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    forma_pagamento = models.CharField(max_length=10, choices=FORMA_PAGAMENTO_CHOICES)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)  # Assuming the value is a monetary amount
+    ong_parceiras = models.CharField(max_length=100, choices=ONG_PARCEIRAS_CHOICES)
+
+    def __str__(self):
+        return self.nome
+
+
+    
