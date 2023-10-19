@@ -16,6 +16,7 @@ urlpatterns = [
 
    
     path('cadastro_ong/', views.cadastro_ong, name='cadastro_ong'),
+    # ROTA CADASTRO PAGAMENTO. 
     path('pagamento_ong/', views.pagamento_ong, name='pagamento_ong'),
 ]
 

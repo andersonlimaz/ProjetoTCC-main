@@ -1,8 +1,9 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <!DOCTYPE html>
+<html lang="en">
 
 <head>
     <!-- Required meta tags-->
@@ -63,7 +64,10 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Pagina Doe</h2>
-                    <form method="POST">
+                    <form action="{% url 'pagamento_ong' %}" method="POST">
+                        {% csrf_token %}
+
+
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
@@ -71,6 +75,8 @@
                                     <input class="input--style-4" type="text" name="name" placeholder="Digite seu nome" required>
                                 </div>
                             </div>
+
+
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">E-mail</label>
@@ -78,6 +84,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Forma De Pagamento</label>
@@ -93,7 +101,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>    
+                        </div>
+                            
                             <div class="card-body">
                                 <label class="label">Valor</label>
                                     <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
