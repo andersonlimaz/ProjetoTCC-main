@@ -1,6 +1,6 @@
 
 from django.urls import path 
-from .views import PaginaInicial, Doe, Servicos, Blog, Contato, Formulario, cadastro_ong, pagamento_ong
+from .views import PaginaInicial, Doe, Servicos, Blog, Contato, Formulario, cadastro_ong, pagamento_ong, pix, boleto
 from django.urls import path
 from . import views
 
@@ -13,6 +13,8 @@ urlpatterns = [
     path('blog/', Blog.as_view(), name='blog'),
     path('contato/', Contato.as_view(), name='contato'),
     path('formulario/', Formulario.as_view(), name='formulario'),
+    path('pix/', pix.as_view(), name='pix'),
+    path('boleto/', boleto.as_view(), name='boleto'),
 
    
     path('cadastro_ong/', views.cadastro_ong, name='cadastro_ong'),

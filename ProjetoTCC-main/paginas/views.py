@@ -29,6 +29,13 @@ class Contato(TemplateView):
 class Formulario(TemplateView):
     template_name = "formulario.html"    
 
+class pix(TemplateView):
+    template_name = "pix.html"
+
+class boleto(TemplateView):
+    template_name = "boleto.html"    
+    
+
 
 
 def cadastro_ong(request):
