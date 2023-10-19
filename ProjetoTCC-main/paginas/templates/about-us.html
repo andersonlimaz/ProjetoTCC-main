@@ -1,8 +1,8 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <!DOCTYPE html>
-<html lang="en">
 
 <head>
     <!-- Required meta tags-->
@@ -21,7 +21,12 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
-
+    <script>
+        var img1 = "{% static 'img/img1.jpg' %}";
+        var img2 = "{% static 'img/img2.jpg' %}";
+        var img3 = "{% static 'img/img3.jpg' %}";
+    </script>
+    <script src="{% static 'js/fotos.js' %}"></script>
 </head>
 
 <body>
@@ -95,7 +100,7 @@
                         <div class="input-group">
                             <label class="label">Ong Parceiras</label>
                             <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="subject">
+                                <select name="subject" id="partnerSelect" onchange="displayImage()">
                                     <option disabled="disabled" selected="selected">Empresa</option>
                                     <option>Empresa 1 </option>
                                     <option>Empresa 2</option>
@@ -104,6 +109,9 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
+                        <img src="" id="image1" style="display: none;" />
+                        <img src="" id="image2" style="display: none;" />
+                        <img src="" id="image3" style="display: none;" />
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Confirmar</button>
                         </div>
