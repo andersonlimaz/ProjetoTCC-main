@@ -21,10 +21,13 @@
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
     <script>
+        var urlPix = "{% url 'pix' %}";
+        var urlBoleto = "{% url 'boleto' %}";
         var img1 = "{% static 'img/imge1.jpg' %}";
         var img2 = "{% static 'img/imge2.jpg' %}";
         var img3 = "{% static 'img/imge3.jpg' %}";
     </script>
+
     <script src="{% static 'js/fotos.js' %}"></script>
 </head>
 
@@ -89,7 +92,7 @@
                                     <label class="label">Forma De Pagamento</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Pix
-                                            <input type="radio" checked="checked" name="forma_pagamento" value="pix" >
+                                            <input type="radio" checked="checked" name="forma_Pagamento" value="pix" >
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Boleto
@@ -100,20 +103,6 @@
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                var pixRadio = document.querySelector('input[value="pix"]');
-                                var boletoRadio = document.querySelector('input[value="boleto"]');
-                        
-                                pixRadio.addEventListener('click', function() {
-                                    window.location.href = 'sua_pagina_de_pagamento_pix.html?valor=SEU_VALOR_FIXO_PIX';
-                                });
-                        
-                                boletoRadio.addEventListener('click', function() {
-                                    window.location.href = 'sua_pagina_de_pagamento_boleto.html?valor=SEU_VALOR_FIXO_BOLETO';
-                                });
-                            });
-                        </script>
                             <div class="card-body">
                                 <label class="label">Valor</label>
                                     <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
@@ -133,14 +122,13 @@
                         <img src="" id="image2" style="display: none;" />
                         <img src="" id="image3" style="display: none;" />
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Confirmar</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit" onclick="redirecionarPagina()">Confirmar</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    
     <!-- Jquery JS-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <!-- Vendor JS-->

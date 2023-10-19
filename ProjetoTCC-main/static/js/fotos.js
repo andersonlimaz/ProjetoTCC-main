@@ -45,3 +45,15 @@ function displayImage(){
         image3.src = img3;
     } 
 }
+
+function redirecionarPagina() {
+    var formaPagamento = document.querySelector('input[name="forma_pagamento"]:checked').value;
+    console.log('Forma de pagamento selecionada:', formaPagamento);
+    if (formaPagamento === 'pix') {
+        window.location.href = urlPix;
+    } else if (formaPagamento === 'boleto') {
+        window.location.href = urlBoleto;
+    } else {
+        console.log('Forma de pagamento não reconhecida.');
+    }
+}
