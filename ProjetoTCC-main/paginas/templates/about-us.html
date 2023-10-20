@@ -21,12 +21,28 @@
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
     <script>
-        var urlPix = "{% url 'pix' %}";
-        var urlBoleto = "{% url 'boleto' %}";
         var img1 = "{% static 'img/imge1.jpg' %}";
         var img2 = "{% static 'img/imge2.jpg' %}";
         var img3 = "{% static 'img/imge3.jpg' %}";
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlPix = "{% url 'inicio' %}"
+            function redirecionarPagina() {
+                var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked').value;
+                console.log('Forma de pagamento selecionada:', formaPagamento);
+                if (formaPagamento === 'pix') {
+                    window.location.href = urlPix;
+                } else if (formaPagamento === 'boleto') {
+                    window.open('file:///C:/Users/naj_ti/Downloads/BOLETO.pdf', '_blank');
+                } else {
+                    console.log('Forma de pagamento não reconhecida.');
+                }
+            }
+        });
+    </script>
+    
+
 
     <script src="{% static 'js/fotos.js' %}"></script>
 </head>
