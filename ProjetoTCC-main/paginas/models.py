@@ -37,7 +37,7 @@ class Pagamento(models.Model):
 
     nome = models.CharField(max_length=100)
     email = models.EmailField()
-    forma_pagamento = models.CharField(max_length=10, choices=FORMA_PAGAMENTO_CHOICES)
+    forma_Pagamento = models.CharField(max_length=10, choices=FORMA_PAGAMENTO_CHOICES)
     valor = models.DecimalField(max_digits=10, decimal_places=2)  # Assuming the value is a monetary amount
     ong_parceiras = models.CharField(max_length=100, choices=ONG_PARCEIRAS_CHOICES)
 

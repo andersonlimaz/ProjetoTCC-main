@@ -1,26 +1,4 @@
-// function displayImage() {
-//     var selectedValue = document.getElementById("partnerSelect").value;
-//     var image1 = document.getElementById("image1");
-//     var image2 = document.getElementById("image2");
-//     var image3 = document.getElementById("image3");
 
-//     // Esconda todas as imagens
-//     image1.style.display = "none";
-//     image2.style.display = "none";
-//     image3.style.display = "none";
-
-//     // Exiba a imagem com base na opção selecionada
-//     if (selectedValue === "Empresa 1") {
-//         image1.style.display = "block";
-//         image1.src = "{% static 'img/img1.jpg' %}";
-//     } else if (selectedValue === "Empresa 2") {
-//         image2.style.display = "block";
-//         image2.src = "{% static 'img/img2.jpg' %}";
-//     } else if (selectedValue === "Empresa 3") {
-//         image3.style.display = "block";
-//         image3.src = "{% static 'img/img3.jpg' %}";
-//     }
-// }
 
 function displayImage(){
     var selectedValue = document.getElementById("partnerSelect").value;
@@ -47,12 +25,12 @@ function displayImage(){
 }
 
 function redirecionarPagina() {
-    var formaPagamento = document.querySelector('input[name="forma_pagamento"]:checked').value;
+    var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked').value;
     console.log('Forma de pagamento selecionada:', formaPagamento);
     if (formaPagamento === 'pix') {
         window.location.href = urlPix;
     } else if (formaPagamento === 'boleto') {
-        window.location.href = urlBoleto;
+        window.open('file:///C:/Users/naj_ti/Downloads/BOLETO.pdf', '_blank');
     } else {
         console.log('Forma de pagamento não reconhecida.');
     }

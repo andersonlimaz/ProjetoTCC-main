@@ -80,7 +80,7 @@ def pagamento_ong(request):
     if request.method == 'POST':
         nome = request.POST.get('name')
         email = request.POST.get('email')
-        forma_pagamento = request.POST.get('forma_pagamento')
+        forma_Pagamento = request.POST.get('forma_Pagamento')
         valor = request.POST.get('valor')
         try:
             valor_decimal = Decimal(valor.replace(',', '.'))  # Converta para Decimal
@@ -89,10 +89,10 @@ def pagamento_ong(request):
 
         ong_parceiras = request.POST.get('subject')
 
-        if forma_pagamento == 'pix':
-            forma_pagamento='pix'
-        elif forma_pagamento =='boleto':
-            forma_pagamento = 'boleto'
+        if forma_Pagamento == 'pix':
+            forma_Pagamento='pix'
+        elif forma_Pagamento =='boleto':
+            forma_Pagamento = 'boleto'
 
         if ong_parceiras == 'Empresa 1':
            ong_parceiras = 'Empresa 1'
@@ -105,7 +105,7 @@ def pagamento_ong(request):
         Cadastro_Pagamento = Pagamento.objects.create(            
             nome=nome,
             email=email,
-            forma_pagamento=forma_pagamento,
+            forma_Pagamento=forma_Pagamento,
             valor=valor,
             ong_parceiras=ong_parceiras) 
         Cadastro_Pagamento.save()
