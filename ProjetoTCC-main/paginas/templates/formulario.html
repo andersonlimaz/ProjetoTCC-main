@@ -1,9 +1,20 @@
 <!DOCTYPE html>
+
 {% load static %}
 
+<html lang="pt-br">
 
- <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="{% static 'css/styleformulario.css' %}" />
+    <title>Formulário</title>
+</head>
+
+<body>
     <div class="container">
         <div class="form-image">
             <img src=  "{% static 'css/assets/img//undraw_shopping_re_3wst.svg' %}"  alt="">
@@ -40,6 +51,13 @@
                     <div class="input-box">
                         <label for="cnpj">CNPJ</label>
                         <input id="cnpj" type="tel" name="cnpj" placeholder="(58.636.441/0001-64)" required>
+                        <div class="error-message2">
+                            {% if error_message2 %}
+                                <p>{{ error_message2 }}</p>
+                            {% endif %}
+                             </div>
+                            
+                   
                     </div>
 
                       <div class="input-box">
@@ -62,7 +80,16 @@
                     <div class="input-box">
                         <label for="email">E-mail</label>
                         <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+                        <div class="error-message">
+                            {% if error_message %}
+                                <p>{{ error_message }}</p>
+                            {% endif %}
+                             </div>
+                            
                     </div>
+
+                    
+                  
 
                     
 
@@ -122,6 +149,8 @@
                     
 
                 </div>
+
+
             </form>
         </div>
     </div>
@@ -146,5 +175,15 @@
 
     </script>
 
+
+     
+    
 </body>
-</html> 
+
+
+
+
+    
+
+
+</html>
