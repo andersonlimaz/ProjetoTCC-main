@@ -14,8 +14,6 @@ body {
     z-index: 1000; 
 }
 
-
-
 * {
   margin: 0px;
   padding: 0px;
@@ -520,6 +518,7 @@ header .nav-items {
         visibility: hidden;
         opacity: 0;
         transition: 0.8s; }
+
 .charity-01-main .bg-05 {
   padding: 3.125rem 0;
   position: relative;
@@ -621,6 +620,7 @@ header .nav-items {
       .charity-01-main .abt-01 .heading-wrapper ol li i {
         margin: 0 0.625rem;
         color: #ddd; }
+
 .charity-01-main .bg-0-b {
   padding: 50px 0px;
   position: relative;
@@ -748,6 +748,13 @@ header .nav-items {
     letter-spacing: 0.5px;
     text-transform: uppercase;
     font-weight: 600; }
+
+.charity-01-main .login-section {  
+  padding: 3.125rem 0;
+  background: #fd1b5b;
+  position: relative;
+  overflow: hidden; 
+}
 
 @keyframes shapeani3 {
   0% {

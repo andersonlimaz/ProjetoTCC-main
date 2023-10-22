@@ -33,7 +33,10 @@ class pix(TemplateView):
     template_name = "pix.html"
 
 class boleto(TemplateView):
-    template_name = "boleto.html"    
+    template_name = "boleto.html"
+
+class login(TemplateView):
+    template_name = "login.html"
     
 
 
