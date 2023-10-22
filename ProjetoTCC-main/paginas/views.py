@@ -137,3 +137,11 @@ def pagamento_ong(request):
 
 
 
+
+
+from django.shortcuts import render
+from .models import Pagamento
+
+def tabela_view(request):
+    dados = Pagamento.objects.all()
+    return render(request, 'exibir_pagamentos.html', {'dados': dados})
