@@ -20,49 +20,47 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
     <script>
         var img1 = "{% static 'img/imge1.jpg' %}";
         var img2 = "{% static 'img/imge2.jpg' %}";
         var img3 = "{% static 'img/imge3.jpg' %}";
     </script>
     <script>
-        function redirecionarPagina() {
-        var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked');
-        var valorInput = document.querySelector('input[name="valor"]').value;
-        console.log(urlPix)
-        if (formaPagamento && valorInput) {
-            formaPagamento = formaPagamento.value;
-            console.log('Forma de pagamento selecionada:', formaPagamento);
-
-            if (formaPagamento === 'pix') {
-                var urlPixElement = document.getElementById('urlPix').dataset.url;
-                console.log(urlPix)
-                if (urlPix) {
-                    window.location.replace(urlPix);
-                } else {
-                    console.error('URL do PIX não encontrado.');
+        function carregarInformacoes() {
+            var loadingMessage = document.getElementById('loadingMessage');
+            loadingMessage.style.display = 'block';
+    
+            var urlPix = document.getElementById('urlPix').getAttribute('data-url');
+            var urlBoleto = document.getElementById('urlBoleto').getAttribute('data-url');
+    
+            var radios = document.getElementsByName('forma_Pagamento');
+            var tipoPagamento;
+    
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    tipoPagamento = radios[i].value;
+                    break;
                 }
-            } else if (formaPagamento === 'boleto') {
-                var urlBoleto = document.getElementById('urlBoleto').dataset.url;
-                if (urlBoleto) {
-                    window.open(urlBoleto, '_blank');
-                } else {
-                    console.error('URL do Boleto não encontrada.');
-                }
-            } else {
-                console.log('Forma de pagamento não reconhecida.');
             }
-        } else {
-            if (!formaPagamento) {
-                alert('Selecione uma forma de pagamento!');
-            }
-            if (!valorInput) {
-                alert('Preencha o campo de valor!');
+    
+            if (tipoPagamento === 'pix') {
+                setTimeout(function () {
+                    loadingMessage.style.display = 'none';
+                    console.log("Redirecionando para Pix: ", urlPix);
+                    window.location.href = urlPix; // Redireciona para o URL do Pix
+                }, 2000); // Tempo de espera de 2 segundos
+            } else if (tipoPagamento === 'boleto') {
+                loadingMessage.style.display = 'none';
+                console.log("Abrindo o boleto em PDF");
+                window.open(urlBoleto, '_blank'); // Abre o PDF em uma nova guia
             }
         }
-    }
+    
+        var confirmButton = document.getElementById('confirmButton');
+        confirmButton.onclick = null;
+        confirmButton.innerHTML = '<a href="' + document.getElementById('urlPix').getAttribute('data-url') + '">Confirmar</a>';
     </script>
-
     <script src="{% static 'js/fotos.js' %}"></script>
 </head>
 <body>
@@ -80,12 +78,12 @@
                 <div class="menu-items">
                   <div class="menu">
                     <ul>
-                      <li><a href="{% url 'inicio' %}">Home</a></li>
-                      <li><a href="{% url 'doe' %}">Doe</a></li>
-                      <li><a href="{% url 'blog' %}">Blog</a></li>
-                      <li><a href="{% url 'contato' %}">Contato</a></li>
-                     <li><a href="{% url 'formulario' %}">Formulario</a></li>
-                     <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'inicio' %}">Home</a></li>
+                    <li><a href="{% url 'doe' %}">Doe</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'contato' %}">Contato</a></li>
+                    <li><a href="{% url 'formulario' %}">Formulario</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
                     </ul>
                   </div>
                 </div>
@@ -98,7 +96,7 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Doe</h2>
+                    <h2 class="title">Doe Agora</h2>
                     <form action="{% url 'pagamento_ong' %}" method="POST">
                         {% csrf_token %}
 
@@ -152,9 +150,10 @@
                         <img src="" id="image2" style="display: none;" />
                         <img src="" id="image3" style="display: none;" />
                         <div class="p-t-15">
-                            <div id="urlPix" data-url="{% url 'pix' %}"></div>
+                            <div id="loadingMessage" style="display:none;">Carregando informações...</div>
+                            <div id="urlPix" href="{% url 'pix/' %}"></div>
                             <div id="urlBoleto" data-url="{% static 'pdf/BOLETO.pdf' %}"></div>
-                            <button class="btn btn--radius-2 btn--blue" type="submit" onclick="redirecionarPagina()">Confirmar</button>
+                            <button id="confirmButton" class="btn btn--radius-2 btn--blue" type="submit" onclick="carregarInformacoes()">Confirmar</button>
                         </div>
                     </form>
                 </div>
