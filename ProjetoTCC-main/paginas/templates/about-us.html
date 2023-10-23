@@ -20,81 +20,83 @@
     <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
     <script>
         var img1 = "{% static 'img/imge1.jpg' %}";
         var img2 = "{% static 'img/imge2.jpg' %}";
         var img3 = "{% static 'img/imge3.jpg' %}";
     </script>
     <script>
-        function redirecionarPagina() {
-            var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked');
-            var valorInput = document.querySelector('input[name="valor"]').value;
-
-            if (formaPagamento && valorInput) {
-                formaPagamento = formaPagamento.value;
-                console.log('Forma de pagamento selecionada:', formaPagamento);
-
-                if (formaPagamento === 'pix') {
-                    var urlPix = "{% url 'inicio' %}"; // Verifique se este URL está correto
-                    if (urlPix) {
-                        window.location.replace(urlPix);
-                        // ou window.location.href = urlPix;
-                    } else {
-                        console.error('URL do PIX não encontrado.');
-                    }
-                } else if (formaPagamento === 'boleto') {
-                    window.open('file:///C:/Users/naj_ti/Downloads/BOLETO.pdf', '_blank');
-                } else {
-                    console.log('Forma de pagamento não reconhecida.');
-                }
-            } else {
-                if (!formaPagamento) {
-                    alert('Selecione uma forma de pagamento!');
-                }
-                if (!valorInput) {
-                    alert('Preencha o campo de valor!');
+        function carregarInformacoes() {
+            var loadingMessage = document.getElementById('loadingMessage');
+            loadingMessage.style.display = 'block';
+    
+            var urlPix = document.getElementById('urlPix').getAttribute('data-url');
+            var urlBoleto = document.getElementById('urlBoleto').getAttribute('data-url');
+    
+            var radios = document.getElementsByName('forma_Pagamento');
+            var tipoPagamento;
+    
+            for (var i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    tipoPagamento = radios[i].value;
+                    break;
                 }
             }
+    
+            if (tipoPagamento === 'pix') {
+                setTimeout(function () {
+                    loadingMessage.style.display = 'none';
+                    console.log("Redirecionando para Pix: ", urlPix);
+                    window.location.href = urlPix; // Redireciona para o URL do Pix
+                }, 2000); // Tempo de espera de 2 segundos
+            } else if (tipoPagamento === 'boleto') {
+                loadingMessage.style.display = 'none';
+                console.log("Abrindo o boleto em PDF");
+                window.open(urlBoleto, '_blank'); // Abre o PDF em uma nova guia
+            }
         }
+    
+        var confirmButton = document.getElementById('confirmButton');
+        confirmButton.onclick = null;
+        confirmButton.innerHTML = '<a href="' + document.getElementById('urlPix').getAttribute('data-url') + '">Confirmar</a>';
     </script>
-
     <script src="{% static 'js/fotos.js' %}"></script>
 </head>
-
 <body>
     <header>
         <div class="my-nav">
-            <div class="container">
-                <div class="row">
-                    <div class="nav-items">
-                        <div class="menu-toggle">
-                            <div class="menu-hamburger"></div>
-                        </div>
-                        <div class="logo">
-                            <img src="{% static 'img/logo.jpg' %}">
-                        </div>
-                        <div class="menu-items">
-                            <div class="menu">
-                                <ul>
-                                    <li><a href="{% url 'inicio' %}">Home</a></li>
-                                    <li><a href="{% url 'doe' %}">Doe</a></li>
-                                    <li><a href="{% url 'blog' %}">Blog</a></li>
-                                    <li><a href="{% url 'contato' %}">Contato</a></li>
-                                    <li><a href="{% url 'formulario' %}">Formulario</a></li>
-                                    <li><a href="{% url 'login' %}">Login</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+          <div class="container">
+            <div class="row">
+              <div class="nav-items">
+                <div class="menu-toggle">
+                  <div class="menu-hamburger"></div>
                 </div>
+                <div class="logo">
+                  <img src="{% static 'img/logo.jpg' %}">
+                </div>
+                <div class="menu-items">
+                  <div class="menu">
+                    <ul>
+                    <li><a href="{% url 'inicio' %}">Home</a></li>
+                    <li><a href="{% url 'doe' %}">Doe</a></li>
+                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                    <li><a href="{% url 'contato' %}">Contato</a></li>
+                    <li><a href="{% url 'formulario' %}">Formulario</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </header>
+      </header>    
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Pagina Doe</h2>
+                    <h2 class="title">Doe Agora</h2>
                     <form action="{% url 'pagamento_ong' %}" method="POST">
                         {% csrf_token %}
 
@@ -103,58 +105,56 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Nome</label>
-                                    <input class="input--style-4" type="text" name="name" placeholder="Digite seu nome"
-                                        required>
+                                    <input class="input--style-4" type="text" name="name" placeholder="Digite seu nome" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">E-mail</label>
-                                    <input class="input--style-4" type="email" name="email" placeholder="email"
-                                        required>
+                                    <input class="input--style-4" type="email" name="email"placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
-
-
                         <div class="col-2">
                             <div class="input-group">
-                                <label class="label">Forma De Pagamento</label>
-                                <div class="p-t-10">
-                                    <label class="radio-container m-r-45">Pix
-                                        <input type="radio" checked="checked" name="forma_Pagamento" value="pix">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="radio-container">Boleto
-                                        <input type="radio" name="forma_Pagamento" value="boleto">
-                                        <span class="checkmark"></span>
-                                    </label>
+                                <label class="label">Forma de Pagamento</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-45">Pix
+                                            <input type="radio" checked="checked" name="forma_Pagamento" value="pix" >
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Boleto
+                                            <input type="radio" name="forma_Pagamento" value="boleto">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                </div>
-                <div class="card-body">
-                    <label class="label">Valor</label>
-                    <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
-                    <div class="input-group">
-                        <label class="label">Ong Parceiras</label>
-                        <div class="rs-select2 js-select-simple select--no-search">
-                            <select name="subject" id="partnerSelect" onchange="displayImage()">
-                                <option disabled="disabled" selected="selected">Empresa</option>
-                                <option>Empresa 1 </option>
-                                <option>Empresa 2</option>
-                                <option>Empresa 3</option>
-                            </select>
-                            <div class="select-dropdown"></div>
+                            <div class="card-body">
+                                <label class="label">Valor</label>
+                                    <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
+                        <div class="input-group">
+                            <label class="label">Ong Parceiras</label>
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="subject" id="partnerSelect" onchange="displayImage()">
+                                    <option disabled="disabled" selected="selected">Empresa</option>
+                                    <option>Empresa 1 </option>
+                                    <option>Empresa 2</option>
+                                    <option>Empresa 3</option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
                         </div>
-                    </div>
-                    <img src="" id="image1" style="display: none;" />
-                    <img src="" id="image2" style="display: none;" />
-                    <img src="" id="image3" style="display: none;" />
-                    <div class="p-t-15">
-                        <button class="btn btn--radius-2 btn--blue" type="submit"
-                            onclick="redirecionarPagina()">Confirmar</button>
-                    </div>
+                        <img src="" id="image1" style="display: none;" />
+                        <img src="" id="image2" style="display: none;" />
+                        <img src="" id="image3" style="display: none;" />
+                        <div class="p-t-15">
+                            <div id="loadingMessage" style="display:none;">Carregando informações...</div>
+                            <div id="urlPix" href="{% url 'pix/' %}"></div>
+                            <div id="urlBoleto" data-url="{% static 'pdf/BOLETO.pdf' %}"></div>
+                            <button id="confirmButton" class="btn btn--radius-2 btn--blue" type="submit" onclick="carregarInformacoes()">Confirmar</button>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -16,7 +16,7 @@ urlpatterns = [
     path('login/', login.as_view(), name='login'),
 
 
-    path('pix/', pix.as_view(), name='pix'),
+    path('pix/', pix.as_view(), name='pix/'),
     path('boleto/', boleto.as_view(), name='boleto'),
 
    
