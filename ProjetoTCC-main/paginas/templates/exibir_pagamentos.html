@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Pagamentos</title>
+</head>
+<body>
+    <h1>Lista de Pagamentos</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Valor</th>
+                <th>Ong Parceiras</th>
+                <th>Forma de Pagamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pagamento in pagamentos %}
+            <tr>
+                <td>{{ pagamento.id }}</td>
+                <td>{{ pagamento.nome }}</td>
+                <td>{{ pagamento.email }}</td>
+                <td>{{ pagamento.valor }}</td>
+                <td>{{ pagamento.ong_parceiras }}</td>
+                <td>{{ pagamento.forma_Pagamento }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
