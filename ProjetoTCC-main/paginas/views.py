@@ -33,14 +33,29 @@ class pix(TemplateView):
     template_name = "pix.html"
 
 class boleto(TemplateView):
-    template_name = "boleto.html"    
+    template_name = "boleto.html"
+
+class login(TemplateView):
+    template_name = "login.html"
     
+
+
+from django.db import IntegrityError
+from django.shortcuts import render, redirect
+from .models import ONG
+from django.views.generic import TemplateView
+
+# Resto do seu código...
+
+class Formulario(TemplateView):
+    template_name = "formulario.html"
+
 
 
 
 def cadastro_ong(request):
     if request.method == 'POST':
-        # Obtain the form data
+        # Obtenha os dados do formulário
         nome_fantasia = request.POST.get('firstname')
         nome_comercial = request.POST.get('lastname')
         cnpj = request.POST.get('cnpj')
@@ -51,7 +66,16 @@ def cadastro_ong(request):
         senha = request.POST.get('password')
         senha2 = request.POST.get('password2')
 
-        # Create an instance of the ONG model and save it to the database
+        # Verifique se o e-mail já existe no banco de dados
+        if ONG.objects.filter(email=email).exists():
+            # E-mail duplicado, exibir uma mensagem de erro
+            return render(request, 'formulario.html', {'error_message': 'Este e-mail já está em uso.'})
+
+        if ONG.objects.filter(cnpj=cnpj).exists():
+            # CNPJ duplicado, exibir uma mensagem de erro
+            return render(request, 'formulario.html', {'error_message2': 'Este CPNJ já está cadastrado.'})
+
+        # Caso contrário, crie uma instância do modelo ONG e salve-a no banco de dados
         ong = ONG(
             nome_fantasia=nome_fantasia,
             nome_comercial=nome_comercial,
@@ -62,20 +86,21 @@ def cadastro_ong(request):
             email=email,
             senha=senha,
             senha2=senha2,
-            
         )
         ong.save()
 
-        # Set a success message in the session variable
+        # Defina uma mensagem de sucesso na variável de sessão
         request.session['mensagem_sucesso'] = 'Cadastro realizado com sucesso.'
-        
-        # Redirect to a success page (replace 'servicos' with the URL of your success page)
+
+        # Redirecione para uma página de sucesso (substitua 'servicos' pela URL de sua página de sucesso)
         return redirect('servicos')
     else:
         request.session['mensagem_sucesso'] = 'Cadastro não realizado.'
 
-        return render(request, 'formulario.html')  # Make sure the template name is correct
-    
+    return render(request, 'formulario.html')  # Certifique-se de que o nome do modelo esteja correto
+
+
+
 def pagamento_ong(request):
     if request.method == 'POST':
         nome = request.POST.get('name')
@@ -115,3 +140,11 @@ def pagamento_ong(request):
 
 
 
+
+
+from django.shortcuts import render
+from .models import Pagamento
+
+def tabela_view(request):
+    dados = Pagamento.objects.all()
+    return render(request, 'exibir_pagamentos.html', {'dados': dados})

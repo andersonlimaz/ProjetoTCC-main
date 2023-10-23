@@ -15,12 +15,12 @@ body {
     background: #fd1b5b;
 }
 
-/* .container {
+.container {
     width: 80%;
     height: 80vh;
     display: flex;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
-} */
+}
 
 .form-image {
     width: 50%;
@@ -97,6 +97,24 @@ body {
     flex-direction: column;
     margin-bottom: 1.1rem;
 }
+
+
+
+
+.error-message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+
+.error-message2 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+
 
 .input-box input {
     margin: 0.6rem 0;
@@ -218,3 +236,4 @@ body {
      
     }
 
+}

@@ -1,10 +1,9 @@
-{% load static %}
+<!DOCTYPE html>
 
-<!doctype html>
+{% load static %}
 <html lang="pt-br">
 
 <head>
-  
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -28,7 +27,7 @@
               <div class="menu-hamburger"></div>
             </div>
             <div class="logo">
-              <img src="{% static 'img/logo.png' %}">
+              <img src="{% static 'img/logo.jpg' %}">
             </div>
             <div class="menu-items">
               <div class="menu">
@@ -39,6 +38,7 @@
                   <li><a href="{% url 'blog' %}">Blog</a></li>
                   <li><a href="{% url 'contato' %}">Contato</a></li>
                  <li><a href="{% url 'formulario' %}">Formulario</a></li>
+                  <li><a href="{% url 'login' %}">Login</a></li>
                 </ul>
               </div>
             </div>
@@ -59,13 +59,13 @@
             <div class="wrapper">
               <div class="content">             
    
-                <h1>Site de Doação</h1>
-                <p>Somos uma organização comprometida em fazer a diferença na vida das pessoas. Nossa missão é proporcionar apoio e assistência a comunidades carentes 
+                <h1>Conecta ONG</h1>
+                <p>Olá, somos a ONG Conecta. Nossa paixão é promover um impacto significativo na vida das pessoas. Nosso compromisso é conectar você a ONGs que têm poucos recursos, a fim de ajudar todos os tipos de projetos sociais. Nosso propósito é proporcionar apoio e assistência essenciais a comunidades desfavorecidas.
                   </p>
                 <div class="btn-002">
                   <ul>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="#">Doe</a></li>
+                    <li><a href="{% url 'contato' %}">Contato</a></li>
+                    <li><a href="{% url 'doe' %}">Doe</a></li>
                   </ul>
                 </div>
               </div>
@@ -89,9 +89,8 @@
         <div class="row">
           <div class="col-12">
             <div class="head-001">
-              <h2>About Us Charity</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laborisnisi.</p>
+              <h1>Missão e Valores</h1>
+              <p></p>
             </div>
           </div>
           <div class="col-lg-6 col-md-6 col-12 ">
@@ -103,14 +102,13 @@
           </div>
           <div class="col-lg-6 col-md-6 col-12">
             <div class="_do_er_xs">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehen derit in voluptate velit esse cillum dolore
-                eu fugiat nulla pariatur.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation they ullamco.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation they ullamco.</p>
+              <p><h3>Missão</h3>Nossa missão é ajudar o máximo de pessoas necessitadas, oferecendo recursos e 
+                apoio essenciais para promover uma mudança significativa em suas vidas.</p>
+              <h3> Valores </h3><p><h5>Comprometimento</h5> Estamos comprometidos em servir as comunidades carentes com dedicação e empatia.</p>
+              <p><h5> Integridade</h5> Agimos com integridade e transparência em todas as nossas interações e operações.</p>
+              <p><h5>Solidariedade</h5> Acreditamos na solidariedade e na união para alcançar um impacto positivo duradouro.</p>
+              <p><h5>Responsabilidade</h5> Assumimos a responsabilidade por nossas ações e impacto na sociedade.</p>
+              <p><h5>Inovação</h5> Buscamos constantemente soluções inovadoras para atender às necessidades em constante evolução das comunidades que servimos.</p>              
             </div>
           </div>
         </div>
@@ -205,6 +203,7 @@
         </div>
       </div>
     </section>
+  </main>
 
 {% endblock %}
 
@@ -214,9 +213,8 @@
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
           <div class="_kl_ds_we">
             <div class="head-footer">
-              <h3>Site de doação </h3>
-              <p>ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua.</p>
+              <h3>Conecta ONG </h3>
+              <p>Redes Socias</p>
               <ol>
                 <li><i class="fab fa-facebook-square"></i></li>
                 <li><i class="fab fa-instagram"></i></li>
@@ -230,13 +228,13 @@
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
           <div class="_kl_ds_we">
             <div class="head-footer">
-              <h3>Services</h3>
+              <h3>Empresas Parceiras</h3>
               <ul>
-                <li><i class="fas fa-chevron-right"></i>Huge Help To Homeless Pupil</li>
-                <li><i class="fas fa-chevron-right"></i>Education For Poor Children</li>
-                <li><i class="fas fa-chevron-right"></i>Medical Facilities</li>
-                <li><i class="fas fa-chevron-right"></i>Raise Fund For Healthy Food</li>
-                <li><i class="fas fa-chevron-right"></i>Let’S Build Some Homes</li>
+                <li><i class="fas fa-chevron-right"></i>Crianças Criativas</li>
+                <li><i class="fas fa-chevron-right"></i>Educação Sem Fronteiras</li>
+                <li><i class="fas fa-chevron-right"></i>Saúde Infantil Global</li>
+                <li><i class="fas fa-chevron-right"></i>Crianças Esportivas</li>
+                <li><i class="fas fa-chevron-right"></i>Crianças Pela Igualdade</li>
               </ul>
             </div>
           </div>
@@ -245,13 +243,13 @@
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
           <div class="_kl_ds_we">
             <div class="head-footer">
-              <h3>Quick links</h3>
+              <h3>Acessos Rápidos</h3>
               <ul>
                 <li><i class="fas fa-chevron-right"></i>Home</li>
-                <li><i class="fas fa-chevron-right"></i>About Us</li>
-                <li><i class="fas fa-chevron-right"></i>Services</li>
+                <li><i class="fas fa-chevron-right"></i>Doe</li>
                 <li><i class="fas fa-chevron-right"></i>Blog</li>
-                <li><i class="fas fa-chevron-right"></i>Contact Us</li>
+                <li><i class="fas fa-chevron-right"></i>Contato</li>
+                <li><i class="fas fa-chevron-right"></i>Formulário</li>
               </ul>
             </div>
           </div>
@@ -260,11 +258,11 @@
         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
           <div class="_kl_ds_we">
             <div class="head-footer">
-              <h3>find us</h3>
+              <h3>Nos Encontre</h3>
               <ul class="un-hover">
-                <li><i class="far fa-location"></i>Marthandam</li>
-                <li><i class="fas fa-mobile-alt"></i>+91 9751791203</li>
-                <li><i class="far fa-envelope"></i>sales@smarteyeapps.com</li>
+                <li><i class="far fa-location"></i>Rua Antônio Macedo, 505 - SP</li>
+                <li><i class="fas fa-mobile-alt"></i>+55 (11)9999-0000</li>
+                <li><i class="far fa-envelope"></i>Contato@conectaong.com</li>
               </ul>
             </div>
           </div>
@@ -273,7 +271,7 @@
           <div class="row _pl_we_sq">
             <div class="col-12">
               <div class="last-01">
-                <p>2023 @ Desenvolvido por: Anderson Brito de Lima<a
+                <p>2023 @ Desenvolvido por: Alan Correia - Anderson Brito - Danilo Borges - Gabriel Militão <a
                     href="https://github.com/andersonlimaz/projeto-django-main">Github</a></p>
               </div>
             </div>

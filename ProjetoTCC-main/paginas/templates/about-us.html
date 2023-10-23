@@ -21,16 +21,45 @@
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
     <script>
-        var urlPix = "{% url 'pix' %}";
-        var urlBoleto = "{% url 'boleto' %}";
         var img1 = "{% static 'img/imge1.jpg' %}";
         var img2 = "{% static 'img/imge2.jpg' %}";
         var img3 = "{% static 'img/imge3.jpg' %}";
     </script>
+<script>
+    function redirecionarPagina() {
+    var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked');
+    var valorInput = document.querySelector('input[name="valor"]').value;
 
-    <script src="{% static 'js/fotos.js' %}"></script>
+    if (formaPagamento && valorInput) {
+        formaPagamento = formaPagamento.value;
+        console.log('Forma de pagamento selecionada:', formaPagamento);
+
+        if (formaPagamento === 'pix') {
+            var urlPix = "{% url 'inicio' %}"; // Verifique se este URL está correto
+            if (urlPix) {
+                window.location.replace(urlPix);
+                // ou window.location.href = urlPix;
+            } else {
+                console.error('URL do PIX não encontrado.');
+            }
+        } else if (formaPagamento === 'boleto') {
+            window.open('file:///C:/Users/naj_ti/Downloads/BOLETO.pdf', '_blank');
+        } else {
+            console.log('Forma de pagamento não reconhecida.');
+        }
+    } else {
+        if (!formaPagamento) {
+            alert('Selecione uma forma de pagamento!');
+        }
+        if (!valorInput) {
+            alert('Preencha o campo de valor!');
+        }
+    }
+}
+</script>
+
+<script src="{% static 'js/fotos.js' %}"></script>
 </head>
-
 <body>
     <header>
         <div class="my-nav">
@@ -41,14 +70,13 @@
                   <div class="menu-hamburger"></div>
                 </div>
                 <div class="logo">
-                  <img src="{% static 'img/logo.png' %}">
+                  <img src="{% static 'img/logo.jpg' %}">
                 </div>
                 <div class="menu-items">
                   <div class="menu">
                     <ul>
                       <li><a href="{% url 'inicio' %}">Home</a></li>
                       <li><a href="{% url 'doe' %}">Doe</a></li>
-                 
                       <li><a href="{% url 'blog' %}">Blog</a></li>
                       <li><a href="{% url 'contato' %}">Contato</a></li>
                      <li><a href="{% url 'formulario' %}">Formulario</a></li>
@@ -76,8 +104,6 @@
                                     <input class="input--style-4" type="text" name="name" placeholder="Digite seu nome" required>
                                 </div>
                             </div>
-
-
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">E-mail</label>
@@ -85,7 +111,7 @@
                                 </div>
                             </div>
                         </div>
-  
+
 
                             <div class="col-2">
                                 <div class="input-group">
@@ -138,7 +164,6 @@
 
     <!-- Main JS-->
     <script src="{% static 'js/global.js' %}"></script>
-
 </body>
 
 </html>
