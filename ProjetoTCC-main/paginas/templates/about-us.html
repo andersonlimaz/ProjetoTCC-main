@@ -25,40 +25,45 @@
         var img2 = "{% static 'img/imge2.jpg' %}";
         var img3 = "{% static 'img/imge3.jpg' %}";
     </script>
-<script>
-    function redirecionarPagina() {
-    var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked');
-    var valorInput = document.querySelector('input[name="valor"]').value;
+    <script>
+        function redirecionarPagina() {
+        var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked');
+        var valorInput = document.querySelector('input[name="valor"]').value;
+        console.log(urlPix)
+        if (formaPagamento && valorInput) {
+            formaPagamento = formaPagamento.value;
+            console.log('Forma de pagamento selecionada:', formaPagamento);
 
-    if (formaPagamento && valorInput) {
-        formaPagamento = formaPagamento.value;
-        console.log('Forma de pagamento selecionada:', formaPagamento);
-
-        if (formaPagamento === 'pix') {
-            var urlPix = "{% url 'inicio' %}"; // Verifique se este URL está correto
-            if (urlPix) {
-                window.location.replace(urlPix);
-                // ou window.location.href = urlPix;
+            if (formaPagamento === 'pix') {
+                var urlPixElement = document.getElementById('urlPix').dataset.url;
+                console.log(urlPix)
+                if (urlPix) {
+                    window.location.replace(urlPix);
+                } else {
+                    console.error('URL do PIX não encontrado.');
+                }
+            } else if (formaPagamento === 'boleto') {
+                var urlBoleto = document.getElementById('urlBoleto').dataset.url;
+                if (urlBoleto) {
+                    window.open(urlBoleto, '_blank');
+                } else {
+                    console.error('URL do Boleto não encontrada.');
+                }
             } else {
-                console.error('URL do PIX não encontrado.');
+                console.log('Forma de pagamento não reconhecida.');
             }
-        } else if (formaPagamento === 'boleto') {
-            window.open('file:///C:/Users/naj_ti/Downloads/BOLETO.pdf', '_blank');
         } else {
-            console.log('Forma de pagamento não reconhecida.');
-        }
-    } else {
-        if (!formaPagamento) {
-            alert('Selecione uma forma de pagamento!');
-        }
-        if (!valorInput) {
-            alert('Preencha o campo de valor!');
+            if (!formaPagamento) {
+                alert('Selecione uma forma de pagamento!');
+            }
+            if (!valorInput) {
+                alert('Preencha o campo de valor!');
+            }
         }
     }
-}
-</script>
+    </script>
 
-<script src="{% static 'js/fotos.js' %}"></script>
+    <script src="{% static 'js/fotos.js' %}"></script>
 </head>
 <body>
     <header>
@@ -80,6 +85,7 @@
                       <li><a href="{% url 'blog' %}">Blog</a></li>
                       <li><a href="{% url 'contato' %}">Contato</a></li>
                      <li><a href="{% url 'formulario' %}">Formulario</a></li>
+                     <li><a href="{% url 'login' %}">Login</a></li>
                     </ul>
                   </div>
                 </div>
@@ -92,7 +98,7 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Pagina Doe</h2>
+                    <h2 class="title">Doe</h2>
                     <form action="{% url 'pagamento_ong' %}" method="POST">
                         {% csrf_token %}
 
@@ -107,15 +113,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">E-mail</label>
-                                    <input class="input--style-4" type="email" name="email"placeholder="email" required>
+                                    <input class="input--style-4" type="email" name="email"placeholder="Email" required>
                                 </div>
                             </div>
                         </div>
-
-
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Forma De Pagamento</label>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Forma de Pagamento</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Pix
                                             <input type="radio" checked="checked" name="forma_Pagamento" value="pix" >
@@ -148,6 +152,8 @@
                         <img src="" id="image2" style="display: none;" />
                         <img src="" id="image3" style="display: none;" />
                         <div class="p-t-15">
+                            <div id="urlPix" data-url="{% url 'pix' %}"></div>
+                            <div id="urlBoleto" data-url="{% static 'pdf/BOLETO.pdf' %}"></div>
                             <button class="btn btn--radius-2 btn--blue" type="submit" onclick="redirecionarPagina()">Confirmar</button>
                         </div>
                     </form>

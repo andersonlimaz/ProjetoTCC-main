@@ -2,5 +2,28 @@
 {% load static %}
 
   {% block conteudo %}
+  <div style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+    <div style="text-align: center;">
+        <h1>Pagamento via Pix</h1>
+        <img src="{% static 'img/QRCODE.png' %}" style="width: 500px; height: auto;">
+        <!-- Adicione aqui o conteúdo para o método de pagamento PIX -->
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <p style="margin-bottom: 5px;">Chave Pix</p>
+        <input type="text" value="000201010212269900114br.gov.bbc.pix2577brcode.prefisa.com.br/qes3/v2//010odASAO5F7JAPIHGW/SAOPAULOCONCETA" id="textoParaCopiar" readonly style="width: 300px; padding: 10px; border-radius: 10px;">
+        <button onclick="copiarTexto()" style="background-color: #d4056d; color: white; border: none; border-radius: 5px; padding: 8px 15px; font-size: 16px; margin-top: 10px;">Copiar</button>
+    </div>
+  </div>
+
+  <script>
+      function copiarTexto() {
+          var texto = document.getElementById('textoParaCopiar');
+          texto.select();
+          document.execCommand('copy');
+          alert('Texto copiado: ' + texto.value);
+      }
+  </script>
+
+    
 
   {% endblock %}
