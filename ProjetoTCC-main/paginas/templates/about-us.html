@@ -25,23 +25,40 @@
         var img2 = "{% static 'img/imge2.jpg' %}";
         var img3 = "{% static 'img/imge3.jpg' %}";
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var urlPix = "{% url 'inicio' %}"
-            function redirecionarPagina() {
-                var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked').value;
-                console.log('Forma de pagamento selecionada:', formaPagamento);
-                if (formaPagamento === 'pix') {
-                    window.location.href = urlPix;
-                } else if (formaPagamento === 'boleto') {
-                    window.open('file:///C:/Users/naj_ti/Downloads/BOLETO.pdf', '_blank');
-                } else {
-                    console.log('Forma de pagamento não reconhecida.');
-                }
+<script>
+    function redirecionarPagina() {
+    var formaPagamento = document.querySelector('input[name="forma_Pagamento"]:checked');
+    var valorInput = document.querySelector('input[name="valor"]').value;
+
+    if (formaPagamento && valorInput) {
+        formaPagamento = formaPagamento.value;
+        console.log('Forma de pagamento selecionada:', formaPagamento);
+
+        if (formaPagamento === 'pix') {
+            var urlPix = "{% url 'inicio' %}"; // Verifique se este URL está correto
+            if (urlPix) {
+                window.location.replace(urlPix);
+                // ou window.location.href = urlPix;
+            } else {
+                console.error('URL do PIX não encontrado.');
             }
-        });
-    </script>
-    <script src="{% static 'js/fotos.js' %}"></script>
+        } else if (formaPagamento === 'boleto') {
+            window.open('file:///C:/Users/naj_ti/Downloads/BOLETO.pdf', '_blank');
+        } else {
+            console.log('Forma de pagamento não reconhecida.');
+        }
+    } else {
+        if (!formaPagamento) {
+            alert('Selecione uma forma de pagamento!');
+        }
+        if (!valorInput) {
+            alert('Preencha o campo de valor!');
+        }
+    }
+}
+</script>
+
+<script src="{% static 'js/fotos.js' %}"></script>
 </head>
 <body>
     <header>
@@ -53,7 +70,7 @@
                   <div class="menu-hamburger"></div>
                 </div>
                 <div class="logo">
-                  <img src="{% static 'img/logo.png' %}">
+                  <img src="{% static 'img/logo.jpg' %}">
                 </div>
                 <div class="menu-items">
                   <div class="menu">
@@ -87,8 +104,6 @@
                                     <input class="input--style-4" type="text" name="name" placeholder="Digite seu nome" required>
                                 </div>
                             </div>
-
-
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">E-mail</label>
@@ -96,8 +111,6 @@
                                 </div>
                             </div>
                         </div>
-
-
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Forma De Pagamento</label>
