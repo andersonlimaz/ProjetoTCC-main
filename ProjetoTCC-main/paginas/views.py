@@ -119,13 +119,13 @@ def pagamento_ong(request):
         elif forma_Pagamento =='boleto':
             forma_Pagamento = 'boleto'
 
-        if ong_parceiras == 'Empresa 1':
-           ong_parceiras = 'Empresa 1'
+        if ong_parceiras == 'Saude infantil Global':
+           ong_parceiras = 'Saude infantil Global'
            
-        elif ong_parceiras == 'Empresa 2':
-            ong_parceiras = 'Empresa 2'
-        elif ong_parceiras == 'Empresa 3':
-            ong_parceiras = 'Empresa 3'
+        elif ong_parceiras == 'Crianças Criativas':
+            ong_parceiras = 'Crianças Criativas'
+        elif ong_parceiras == 'Crianças pela Igualdade':
+            ong_parceiras = 'Crianças pela Igualdade'
 
         Cadastro_Pagamento = Pagamento.objects.create(            
             nome=nome,
