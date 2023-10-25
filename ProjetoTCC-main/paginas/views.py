@@ -10,6 +10,8 @@ from .models import ONG, Pagamento
 from django.http import HttpResponse
 from decimal import Decimal, InvalidOperation
 from django.contrib import messages
+from django.contrib.auth import authenticate
+
 # Create your views here.
 class PaginaInicial(TemplateView):
     template_name = "index.html"
@@ -35,7 +37,7 @@ class pix(TemplateView):
 class boleto(TemplateView):
     template_name = "boleto.html"
 
-class login(TemplateView):
+class Login(TemplateView):
     template_name = "login.html"
     
 
@@ -49,8 +51,6 @@ from django.views.generic import TemplateView
 
 class Formulario(TemplateView):
     template_name = "formulario.html"
-
-
 
 
 def cadastro_ong(request):
@@ -148,3 +148,20 @@ from .models import Pagamento
 def tabela_view(request):
     dados = Pagamento.objects.all()
     return render(request, 'exibir_pagamentos.html', {'dados': dados})
+
+
+def fazerLogin(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+    else:
+        email = request.POST.get('email')
+        senha = request.POST.get('password')
+
+        try:
+            ong = ONG.objects.get(email=email)
+            if ong.senha == senha:
+                return HttpResponse('Autenticado')
+            else:
+                return HttpResponse('Credenciais inválidos')
+        except ONG.DoesNotExist:
+            return HttpResponse('E-mail não encontrado')

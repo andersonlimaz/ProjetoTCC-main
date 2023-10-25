@@ -19,7 +19,8 @@
 
 <body>
     <main id="container">
-        <form id="login-form">
+        <form action="{% url 'fazerLogin' %}" method="POST" id="login-form">
+            {% csrf_token %}
             <div id="form-header">
                 <h1>Login</h1>
                 <i id="mode_icon" class="fa-solid fa-moon"></i>
@@ -45,7 +46,7 @@
                         Usuário
                         <div class="input-field">
                             <i class="fa-solid fa-user"></i>
-                            <input type="text" id="user" name="user">
+                            <input type="text" id="email" name="email" required>
                         </div>
                     </label>
                 </div>
@@ -55,7 +56,7 @@
                         Senha
                         <div class="input-field">
                             <i class="fa-solid fa-lock"></i>
-                            <input type="password" id="password" name="password">
+                            <input type="password" id="password" name="password" required>
                         </div>
                     </label>
                 </div>
