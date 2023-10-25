@@ -17,10 +17,11 @@
     <link href="{% static 'vendor/font-awesome-4.7/css/font-awesome.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/main1.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/all.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/style.css' %}" rel="stylesheet" media="all">
-    
+    <link rel="stylesheet" href="{% static 'css/paginadoe.css' %}">
+
     <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> -->
     <script>
         var img1 = "{% static 'img/img1.jpg' %}";
@@ -31,20 +32,20 @@
         function carregarInformacoes() {
             var loadingMessage = document.getElementById('loadingMessage');
             loadingMessage.style.display = 'block';
-    
+
             var urlPix = document.getElementById('urlPix').getAttribute('data-url');
             var urlBoleto = document.getElementById('urlBoleto').getAttribute('data-url');
-    
+
             var radios = document.getElementsByName('forma_Pagamento');
             var tipoPagamento;
-    
+
             for (var i = 0; i < radios.length; i++) {
                 if (radios[i].checked) {
                     tipoPagamento = radios[i].value;
                     break;
                 }
             }
-    
+
             if (tipoPagamento === 'pix') {
                 setTimeout(function () {
                     loadingMessage.style.display = 'none';
@@ -56,87 +57,91 @@
                 console.log("Abrindo o boleto em PDF");
                 window.open(urlBoleto, '_blank'); // Abre o PDF em uma nova guia
             }
-        } 
-    
+        }
+
         var confirmButton = document.getElementById('confirmButton');
         confirmButton.onclick = null;
         confirmButton.innerHTML = '<a href="' + document.getElementById('urlPix').getAttribute('data-url') + '">Confirmar</a>';
     </script>
     <script src="{% static 'js/fotos.js' %}"></script>
 </head>
+
 <body>
     <header>
         <div class="my-nav">
-          <div class="container">
-            <div class="row">
-              <div class="nav-items">
-                <div class="menu-toggle">
-                  <div class="menu-hamburger"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="nav-items">
+                        <div class="menu-toggle">
+                            <div class="menu-hamburger"></div>
+                        </div>
+                        <div class="logo">
+                            <img src="{% static 'img/logo.jpg' %}">
+                        </div>
+                        <div class="menu-items">
+                            <div class="menu">
+                                <ul>
+                                    <li><a href="{% url 'inicio' %}">Home</a></li>
+                                    <li><a href="{% url 'doe' %}">Doe</a></li>
+                                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                                    <li><a href="{% url 'contato' %}">Contato</a></li>
+                                    <li><a href="{% url 'formulario' %}">Formulario</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="logo">
-                  <img src="{% static 'img/logo.jpg' %}">
-                </div>
-                <div class="menu-items">
-                  <div class="menu">
-                    <ul>
-                    <li><a href="{% url 'inicio' %}">Home</a></li>
-                    <li><a href="{% url 'doe' %}">Doe</a></li>
-                    <li><a href="{% url 'blog' %}">Blog</a></li>
-                    <li><a href="{% url 'contato' %}">Contato</a></li>
-                    <li><a href="{% url 'formulario' %}">Formulario</a></li>
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </header>    
+    </header>
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Doe Agora</h2>
+                    <div class="card-body" style="padding-top: 10px; text-align: center;">
+                    <h1 class="title">Doe Agora</h1>
+                </div>
                     <form action="{% url 'pagamento_ong' %}" method="POST">
                         {% csrf_token %}
-
-
-                        <div class="row row-space">
-                            <div class="col-2">
+                        <div class="row row-space"  style="margin-bottom: -50px;">
+                            <div class="col-4">
                                 <div class="input-group">
                                     <label class="label">Nome</label>
                                     <input class="input--style-4" type="text" name="name" placeholder="Digite seu nome" required>
                                 </div>
                             </div>
-                            <div class="col-2">
+                        </div>
+                        <div class="row row-space"  style="margin-bottom: -50px;">
+                            <div class="col-4">
                                 <div class="input-group">
                                     <label class="label">E-mail</label>
-                                    <input class="input--style-4" type="email" name="email"placeholder="Email" required>
+                                    <input class="input--style-4" type="email" name="email" placeholder="Email" required>
                                 </div>
                             </div>
-                        </div>
+                        </div>                                               
                         <div class="col-2">
                             <div class="input-group">
                                 <label class="label">Forma de Pagamento</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Pix
-                                            <input type="radio" checked="checked" name="forma_Pagamento" value="pix" >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Boleto
-                                            <input type="radio" name="forma_Pagamento" value="boleto">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
+                                <div class="p-t-5">
+                                    <label class="radio-container m-r-45">Pix
+                                        <input type="radio" checked="checked" name="forma_Pagamento" value="pix">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    <label class="radio-container">Boleto
+                                        <input type="radio" name="forma_Pagamento" value="boleto">
+                                        <span class="checkmark"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                            <div class="card-body">
-                                <label class="label">Valor</label>
-                                    <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
+                </div>
+                <div class="card-body">
+                    <label class="label">Valor</label>
+                    <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
+                    <div class="input-group">
+                        <label class="label">Ong Parceiras</label>
                         <div class="input-group">
-                            <label class="label">Ong Parceiras</label>
                             <div class="rs-select2 js-select-simple select--no-search">
                                 <select name="subject" id="partnerSelect" onchange="displayImage()">
                                     <option disabled="disabled" selected="selected">Escolha uma empresa</option>
@@ -146,16 +151,17 @@
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
-                        </div>
-                        <img src="" id="image1" style="display: none;" />
-                        <img src="" id="image2" style="display: none;" />
-                        <img src="" id="image3" style="display: none;" />
-                        <div class="p-t-15">
-                            <div id="loadingMessage" style="display:none;">Carregando informações...</div>
-                            <div id="urlPix" href="{% url 'pix/' %}"></div>
-                            <div id="urlBoleto" data-url="{% static 'pdf/BOLETO.pdf' %}"></div>
-                            <button id="confirmButton" class="btn btn--radius-2 btn--blue" type="submit" onclick="carregarInformacoes()">Confirmar</button>
-                        </div>
+                        </div>                        
+                    <img src="" id="image1" style="display: none;" />
+                    <img src="" id="image2" style="display: none;" />
+                    <img src="" id="image3" style="display: none;" />
+                    <div class="p-t-15">
+                        <div id="loadingMessage" style="display:none;">Carregando informações...</div>
+                        <div id="urlPix" href="{% url 'pix/' %}"></div>
+                        <div id="urlBoleto" data-url="{% static 'pdf/BOLETO.pdf' %}"></div>
+                        <button id="confirmButton" class="btn btn--radius-2 btn--blue" type="submit"
+                            onclick="carregarInformacoes()">Confirmar</button>
+                    </div>
                     </form>
                 </div>
             </div>
