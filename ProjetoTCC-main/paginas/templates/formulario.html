@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/static/css/style.css" />
     <link rel="stylesheet" href="/static/css/form.css" /> <!-- Estilo para o formulário -->
     
+
+    
 </head>
 
 <style>
@@ -21,6 +23,8 @@
         margin: 0;
         box-sizing: border-box;
         font-family: 'Inter', sans-serif;
+        justify-content: center;
+        
     }
   
     .form-image {
@@ -34,9 +38,10 @@
 
     .form-image img {
         width: 31rem;
-    }  
+    } 
+
 .form {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,8 +53,7 @@
 .form-header {
     margin-bottom: 3rem;
     display: flex;
-    justify-content: space-between;
-}
+justify-content: center;}
 
 .login-button {
     display: flex;
@@ -232,7 +236,20 @@
         margin-top: 0.62rem;
         padding: 0 .5rem;
     }
+   
+
+    /* Add this CSS to center the form */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
     
+    #formulario {
+      text-align: center;
+    }
 
 </style>
 
@@ -267,15 +284,15 @@
     </div>
   </header>
 
-
+  
   
   <!-- Formulário -->
-  <section id="formulario" >
+  <section id="formulario"   >
    
 
     <div class="container2">
         <div class="form-image">
-            <img src="css/assets/img/undraw_shopping_re_3wst.svg" alt="">
+            
         </div>
     </div>
     
@@ -291,12 +308,7 @@
                         <h1> <br>Cadastre De ONGS   
                               </h1>
                     </div>
-                    <div class="login-button">
-                        <button>
-                        <a href="{% url 'inicio' %}">Voltar</a></button>
-
-                       
-                    </div>
+                  
                 </div>
 
                 <div class="input-group">
