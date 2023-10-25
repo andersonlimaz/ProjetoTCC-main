@@ -107,11 +107,11 @@ def pagamento_ong(request):
         email = request.POST.get('email')
         forma_Pagamento = request.POST.get('forma_Pagamento')
         valor = request.POST.get('valor')
+        valor = valor.replace(',', '$').replace('.', '$').replace('$', '.')
         try:
-            valor_decimal = Decimal(valor.replace(',', '.'))  # Converta para Decimal
+            valor_decimal = Decimal(valor)  # Converta para Decimal
         except InvalidOperation:
-            valor_decimal = None 
-
+            valor_decimal = None
         ong_parceiras = request.POST.get('subject')
 
         if forma_Pagamento == 'pix':
@@ -119,13 +119,13 @@ def pagamento_ong(request):
         elif forma_Pagamento =='boleto':
             forma_Pagamento = 'boleto'
 
-        if ong_parceiras == 'Empresa 1':
-           ong_parceiras = 'Empresa 1'
+        if ong_parceiras == 'Saude infantil Global':
+           ong_parceiras = 'Saude infantil Global'
            
-        elif ong_parceiras == 'Empresa 2':
-            ong_parceiras = 'Empresa 2'
-        elif ong_parceiras == 'Empresa 3':
-            ong_parceiras = 'Empresa 3'
+        elif ong_parceiras == 'Crianças Criativas':
+            ong_parceiras = 'Crianças Criativas'
+        elif ong_parceiras == 'Crianças pela Igualdade':
+            ong_parceiras = 'Crianças pela Igualdade'
 
         Cadastro_Pagamento = Pagamento.objects.create(            
             nome=nome,
@@ -136,8 +136,21 @@ def pagamento_ong(request):
         Cadastro_Pagamento.save()
         messages.success(request, 'Pagamento realizado com sucesso!')
         
-        return redirect('doe')
+        if forma_Pagamento == 'pix':
+            forma_Pagamento='pix'
+            return redirect('pix/')  # Redireciona para a página do Pix
+        elif forma_Pagamento == 'boleto':
+            forma_Pagamento = 'boleto'
+            return redirect('inicio') 
 
+
+
+from django.shortcuts import render
+from .models import Pagamento
+
+def tabela_view(request):
+    dados = Pagamento.objects.all()
+    return render(request, 'exibir_pagamentos.html', {'dados': dados})
 
 
 

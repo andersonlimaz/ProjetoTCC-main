@@ -12,13 +12,13 @@ function displayImage(){
     image3.style.display = "none";
 
     // Exiba a imagem com base na opção selecionada
-    if (selectedValue === "Empresa 1") {
+    if (selectedValue === "Saude infantil Global") {
         image1.style.display= "block";
         image1.src = img1;
-    } else if (selectedValue === "Empresa 2") {
+    } else if (selectedValue === "Crianças Criativas") {
         image2.style.display= "block"
         image2.src = img2;
-    } else if (selectedValue === "Empresa 3") {
+    } else if (selectedValue === "Crianças pela Igualdade") {
         image3.style.display= "block"
         image3.src = img3;
     } 
