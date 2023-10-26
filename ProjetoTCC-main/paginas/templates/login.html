@@ -61,6 +61,17 @@
                     </label>
                 </div>
 
+                <div id="error_msg">
+                    {% if error_msg %}
+                    <p>{{ error_msg }}</p>
+                    {% endif %}
+
+                    {% if error_msg1 %}
+                    <p>{{ error_msg1 }}</p>
+                    {% endif %}
+
+                </div>
+
                 <div id="forgot-password">
                     <a href="#">
                         Esqueceu sua senha?

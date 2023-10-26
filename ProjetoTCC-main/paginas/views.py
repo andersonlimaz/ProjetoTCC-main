@@ -1,4 +1,7 @@
 
+from .models import Pagamento
+from django.shortcuts import render
+from django.db import IntegrityError
 from pyexpat.errors import messages
 from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
@@ -13,41 +16,46 @@ from django.contrib import messages
 from django.contrib.auth import authenticate
 
 # Create your views here.
+
+
 class PaginaInicial(TemplateView):
     template_name = "index.html"
 
+
 class Doe(TemplateView):
-    template_name ="about-us.html"
+    template_name = "about-us.html"
+
 
 class Servicos(TemplateView):
     template_name = "services.html"
 
+
 class Blog(TemplateView):
     template_name = "blog.html"
 
+
 class Contato(TemplateView):
     template_name = "contact-us.html"
-    
+
+
 class Formulario(TemplateView):
-    template_name = "formulario.html"    
+    template_name = "formulario.html"
+
 
 class pix(TemplateView):
     template_name = "pix.html"
 
+
 class boleto(TemplateView):
     template_name = "boleto.html"
 
+
 class Login(TemplateView):
     template_name = "login.html"
-    
 
-
-from django.db import IntegrityError
-from django.shortcuts import render, redirect
-from .models import ONG
-from django.views.generic import TemplateView
 
 # Resto do seu código...
+
 
 class Formulario(TemplateView):
     template_name = "formulario.html"
@@ -97,8 +105,8 @@ def cadastro_ong(request):
     else:
         request.session['mensagem_sucesso'] = 'Cadastro não realizado.'
 
-    return render(request, 'formulario.html')  # Certifique-se de que o nome do modelo esteja correto
-
+    # Certifique-se de que o nome do modelo esteja correto
+    return render(request, 'formulario.html')
 
 
 def pagamento_ong(request):
@@ -115,48 +123,39 @@ def pagamento_ong(request):
         ong_parceiras = request.POST.get('subject')
 
         if forma_Pagamento == 'pix':
-            forma_Pagamento='pix'
-        elif forma_Pagamento =='boleto':
+            forma_Pagamento = 'pix'
+        elif forma_Pagamento == 'boleto':
             forma_Pagamento = 'boleto'
 
         if ong_parceiras == 'Saude infantil Global':
-           ong_parceiras = 'Saude infantil Global'
-           
+            ong_parceiras = 'Saude infantil Global'
+
         elif ong_parceiras == 'Crianças Criativas':
             ong_parceiras = 'Crianças Criativas'
         elif ong_parceiras == 'Crianças pela Igualdade':
             ong_parceiras = 'Crianças pela Igualdade'
 
-        Cadastro_Pagamento = Pagamento.objects.create(            
+        Cadastro_Pagamento = Pagamento.objects.create(
             nome=nome,
             email=email,
             forma_Pagamento=forma_Pagamento,
             valor=valor,
-            ong_parceiras=ong_parceiras) 
+            ong_parceiras=ong_parceiras)
         Cadastro_Pagamento.save()
         messages.success(request, 'Pagamento realizado com sucesso!')
-        
+
         if forma_Pagamento == 'pix':
-            forma_Pagamento='pix'
+            forma_Pagamento = 'pix'
             return redirect('pix/')  # Redireciona para a página do Pix
         elif forma_Pagamento == 'boleto':
             forma_Pagamento = 'boleto'
-            return redirect('inicio') 
+            return redirect('inicio')
 
-
-
-from django.shortcuts import render
-from .models import Pagamento
 
 def tabela_view(request):
     dados = Pagamento.objects.all()
     return render(request, 'exibir_pagamentos.html', {'dados': dados})
 
-
-
-
-from django.shortcuts import render
-from .models import Pagamento
 
 def tabela_view(request):
     dados = Pagamento.objects.all()
@@ -173,8 +172,9 @@ def fazerLogin(request):
         try:
             ong = ONG.objects.get(email=email)
             if ong.senha == senha:
+                # TROCAR PELA PÁGINA A SER CONECTADA.
                 return HttpResponse('Autenticado')
             else:
-                return HttpResponse('Credenciais inválidos')
+                return render(request, 'login.html', {'error_msg': 'Senha inválida.'})
         except ONG.DoesNotExist:
-            return HttpResponse('E-mail não encontrado')
+            return render(request, 'login.html', {'error_msg1': 'Email não encontrado.'})
