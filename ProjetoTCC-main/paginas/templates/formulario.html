@@ -1,5 +1,5 @@
 {% extends 'index.html' %}
-{% load static %}
+ {%load static %}
 
 {% block titulo %}
 <title>Formulario</title>
@@ -63,7 +63,7 @@
     </header>
   
     
-    
+    .
     <!-- Formulário -->
     <section id="formulario"   >
      
@@ -245,15 +245,27 @@
     }
      
    
+    #formulario {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Isso ajusta o formulário para ocupar a altura total da janela. */
+    }
+
 .form {
-    width: 100%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: #ffd8e3ea;
     padding: 3rem;
+
+
+
+
 }
+
 
 
 
@@ -261,6 +273,7 @@
     margin-bottom: 3rem;
     display: flex;
 justify-content: center;}
+
 
 .login-button {
     display: flex;
