@@ -1,22 +1,239 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends 'index.html' %}
+ {%load static %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Formulário</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/all.min.css">
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="stylesheet" href="/static/css/form.css" /> <!-- Estilo para o formulário -->
+{% block titulo %}
+<title>Formulario</title>
+{% endblock %}
+  {% block conteudo %}
+  <!-- ======== main started ========= -->
+
+  <main class="charity-01-main">
+
+    <!-- ============abt-01 Section  Start============ -->
+
+    <section class="abt-01">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading-wrapper">
+                        <br>
+                        <h3>Formulario</h3>
+                        <ol>
+                            <li>Formulario<i class="far fa-angle-double-right"></i></li>
+                            <li>Login</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <section class="bg-0-b">
     
-
+        
+<body>
+    <!-- ======== header started ========= -->
+    <header>
+      <div class="my-nav">
+        <div class="container">
+          <div class="row">
+            <div class="nav-items">
+              <div class="menu-toggle">
+                <div class="menu-hamburger"></div>
+              </div>
+              <div class="logo">
+                <img src="/static/img/logo.jpg">
+              </div>
+              <div class="menu-items">
+                <div class="menu">
+                  <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/doe/">Doe</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/contato/">Contato</a></li>
+                    <li><a href="/formulario/">Formulario</a></li>
+                    <li><a href="/login/">Login</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  
     
-</head>
+    .
+    <!-- Formulário -->
+    <section id="formulario"   >
+     
+  
+      <div class="container2">
+          <div class="form-image">
+              
+          </div>
+      </div>
+      
+  
+          <div class="form">
+  
+              <form action="{% url 'cadastro_ong' %}" method="POST">
+              {% csrf_token %}
+  
+  
+                  <div class="form-header">
+                      <div class="title">
+                          <h1> <br>Cadastro De ONGS   
+                                </h1>
+                      </div>
+                    
+                  </div>
+  
+                  <div class="input-group">
+                      <div class="input-box">
+                          <label for="firstname"> Nome Fantasia</label>
+                          <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
+                      </div>
+  
+                      <div class="input-box">
+                          <label for="lastname">Nome Comercial</label>
+                          <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
+                      </div>
+                      
+                      <div class="input-box">
+                          <label for="cnpj">Cnpj</label>
+                          <input id="cnpj" type="tel" name="cnpj" placeholder="(58.636.441/0001-64)" required>
+                          
+                      </div>
+                      
 
-<style>
-   
-   
+                        <div class="input-box">
+                          <label for="number">Celular</label>
+                          <input id="number" type="number" name="number" placeholder="(xx) xxxx-xxxx" required>
+                      </div>
+  
+                      <div class="input-box">
+                          <label for="endereco">Endereço </label>
+                          <input id="endereco" type="text" name="endereco" placeholder="Digite seu Endereço" required>
+                      </div>
+                  
+                      <div class="input-box">
+                          <label for="cidade">Cidade</label>
+                          <input id="cidade" type="text" name="cidade" placeholder="Digite sua Cidade" required>
+                      </div>
+                      
+  
+  
+                      <div class="input-box">
+                          <label for="email">E-mail</label>
+                          <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+                        
+                      </div>
+  
+                      
+                    
+  
+                      
+  
+                      <div class="input-box">
+                          <label for="password">Senha</label>
+                          <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                      </div>
+  
+  
+                      <div class="input-box">
+                          <label for="password2">Confirme sua Senha</label>
+                          <input id="password2" type="password" name="password2" placeholder="Digite sua senha novamente" required>
+                           <span id="passwordMatch"></span>
+                      </div>
+  
+                  </div>
+  
+                  <div class="gender-inputs">
+                      <div class="gender-title">
+                          <h6>Foco</h6>
+                      </div>
+  
+                      <div class="gender-group">
+                          <div class="gender-input">
+                              <input id="female" type="radio" name="gender">
+                              <label for="female">Alimentos</label>
+                          </div>
+  
+                          <div class="gender-input">
+                              <input id="male" type="radio" name="gender">
+                              <label for="male">Roupas</label>
+                          </div>
+  
+                          <div class="gender-input">
+                              <input id="others" type="radio" name="gender">
+                              <label for="others">Brinquedos</label>
+                          </div>
+  
+                          <div class="gender-input">
+                              <input id="none" type="radio" name="gender">
+                              <label for="none">educação</label>
+                          </div>
+                      </div>
+                  </div>
+   <br>
+                    <div class="input-box">
+                          <label for="sobre"> <br>Sobre a Ong: </label>
+                          <input id="sobre" type="text" name="sobre" placeholder="Digite Sobre sua Ong" required>
+                      </div>
+                
+         
+                      <div class="error-message2">
+                        {% if error_message2 %}
+                            <p>{{ error_message2 }}</p>
+                        {% endif %}
+                         </div>   
+                        
+
+                         <div class="error-message">
+                            {% if error_message %}
+                                <p>{{ error_message }}</p>
+                            {% endif %}
+                             </div>
+                            
+                  <div class="continue-button">
+                      <button><a href="{% url 'inicio' %}">Cadastra </a> </button>
+  
+                      
+  
+                  </div>
+  
+  
+              </form>
+          </div>
+      </div>
+    </section>
+  
+  
+    <script>
+      const password = document.getElementById("password");
+      const password2 = document.getElementById("password2");
+      const passwordMatch = document.getElementById("passwordMatch");
+  
+      function validatePassword() {
+          if (password.value !== password2.value) {
+              passwordMatch.textContent = "As senhas não coincidem!";
+              password2.setCustomValidity("As senhas não coincidem!");
+          } else {
+              passwordMatch.textContent = "";
+              password2.setCustomValidity("");
+          }
+      }
+  
+      password.addEventListener("input", validatePassword);
+      password2.addEventListener("input", validatePassword);
+  
+  </script>
+  
+
+
+  <style>
+
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
     * {
         padding: 0;
@@ -26,40 +243,44 @@
         justify-content: center;
         
     }
-  
-    .form-image {
-        width: 50%;
+     
+   
+    #formulario {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #fd1b5b;
-        padding: 1rem;
+        height: 100vh; /* Isso ajusta o formulário para ocupar a altura total da janela. */
     }
 
-    .form-image img {
-        width: 31rem;
-    } 
-
 .form {
-    width: 90%;
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: #ffd8e3ea;
     padding: 3rem;
+
+
+
+
 }
+
+
+
 
 .form-header {
     margin-bottom: 3rem;
     display: flex;
 justify-content: center;}
 
+
 .login-button {
     display: flex;
     align-items: center;
 }
 
+   
 .login-button button {
     border: none;
     background-color: #f86ed6e3;
@@ -88,6 +309,7 @@ justify-content: center;}
     position: absolute;
     border-radius: 10px;
 }
+
 
 .input-group {
     display: flex;
@@ -137,7 +359,7 @@ justify-content: center;}
     outline: 1px solid #6c63ff;
 }
 
-.input-box label,
+input-box label,
 .gender-title h6 {
     font-size: 0.75rem;
     font-weight: 600;
@@ -147,6 +369,7 @@ justify-content: center;}
 .input-box input::placeholder {
     color: #000000be;
 }
+
 
 .gender-group {
     display: flex;
@@ -170,6 +393,7 @@ justify-content: center;}
     color: #000000c0;
 }
 
+
 .continue-button button {
     width: 100%;
     margin-top: 2.5rem;
@@ -191,11 +415,21 @@ justify-content: center;}
     color: #fff;
 }
 
+
+
+input-sobre {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+
 @media screen and (max-width: 1330px) {
     .form-image {
         display: none;
     }
-    .container {
+    .container2 {
         width: 50%;
     }
     .form {
@@ -204,7 +438,7 @@ justify-content: center;}
 }
 
 @media screen and (max-width: 1064px) {
-    .container {
+    .container2 {
         width: 90%;
         height: auto;
     }
@@ -216,242 +450,13 @@ justify-content: center;}
         overflow-y: scroll;
         flex-wrap: nowrap;
     }
-    .gender-inputs {
-        margin-top: 2rem;
-    }
-    .gender-group {
-        flex-direction: column;
-    }
-    .gender-title h6 {
-        margin: 0;
-    }
-    .gender-input {
-        margin-top: 0.5rem;
-    }
 
-
-    input-sobre {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 0.62rem;
-        padding: 0 .5rem;
-    }
-   
-
-    /* Add this CSS to center the form */
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-    
-    #formulario {
-      text-align: center;
-    }
-
-</style>
-
-<body>
-  <!-- ======== header started ========= -->
-  <header>
-    <div class="my-nav">
-      <div class="container">
-        <div class="row">
-          <div class="nav-items">
-            <div class="menu-toggle">
-              <div class="menu-hamburger"></div>
-            </div>
-            <div class="logo">
-              <img src="/static/img/logo.jpg">
-            </div>
-            <div class="menu-items">
-              <div class="menu">
-                <ul>
-                  <li><a href="/">Home</a></li>
-                  <li><a href="/doe/">Doe</a></li>
-                  <li><a href="/blog/">Blog</a></li>
-                  <li><a href="/contato/">Contato</a></li>
-                 <li><a href="/formulario/">Formulario</a></li>
-                  <li><a href="/login/">Login</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-
+  </style>
   
+  </body>
   
-  <!-- Formulário -->
-  <section id="formulario"   >
-   
+     </section>
 
-    <div class="container2">
-        <div class="form-image">
-            
-        </div>
-    </div>
-    
-
-        <div class="form">
-
-            <form action="{% url 'cadastro_ong' %}" method="POST">
-            {% csrf_token %}
-
-
-                <div class="form-header">
-                    <div class="title">
-                        <h1> <br>Cadastro De ONGS   
-                              </h1>
-                    </div>
-                  
-                </div>
-
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="firstname"> Nome Fantasia</label>
-                        <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="lastname">Nome Comercial</label>
-                        <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
-                    </div>
-                    
-                    <div class="input-box">
-                        <label for="cnpj">CNPJ</label>
-                        <input id="cnpj" type="tel" name="cnpj" placeholder="(58.636.441/0001-64)" required>
-                        <div class="error-message2">
-                            {% if error_message2 %}
-                                <p>{{ error_message2 }}</p>
-                            {% endif %}
-                             </div>
-                            
-                   
-                    </div>
-
-                      <div class="input-box">
-                        <label for="number">Celular</label>
-                        <input id="number" type="number" name="number" placeholder="(xx) xxxx-xxxx" required>
-                    </div>
-
-                    <div class="input-box">
-                        <label for="endereco">Endereço </label>
-                        <input id="endereco" type="text" name="endereco" placeholder="Digite seu Endereço" required>
-                    </div>
-                    
-                    <div class="input-box">
-                        <label for="cidade">Cidade</label>
-                        <input id="cidade" type="text" name="cidade" placeholder="Digite sua Cidade" required>
-                    </div>
-                    
-
-
-                    <div class="input-box">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
-                        <div class="error-message">
-                            {% if error_message %}
-                                <p>{{ error_message }}</p>
-                            {% endif %}
-                             </div>
-                            
-                    </div>
-
-                    
-                  
-
-                    
-
-                    <div class="input-box">
-                        <label for="password">Senha</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
-                    </div>
-
-
-                    <div class="input-box">
-                        <label for="password2">Confirme sua Senha</label>
-                        <input id="password2" type="password" name="password2" placeholder="Digite sua senha novamente" required>
-                         <span id="passwordMatch"></span>
-                    </div>
-
-                </div>
-
-                <div class="gender-inputs">
-                    <div class="gender-title">
-                        <h6>Foco</h6>
-                    </div>
-
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
-                            <label for="female">Alimentos</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
-                            <label for="male">Roupas</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="others" type="radio" name="gender">
-                            <label for="others">Brinquedos</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">educação</label>
-                        </div>
-                    </div>
-                </div>
- <br>
-                  <div class="input-box">
-                        <label for="sobre"> <br>Sobre a Ong: </label>
-                        <input id="sobre" type="text" name="sobre" placeholder="Digite Sobre sua Ong" required>
-                    </div>
-              
-       
-
-
-                <div class="continue-button">
-                    <button><a href="{% url 'inicio' %}">Cadastra </a> </button>
-
-                    
-
-                </div>
-
-
-            </form>
-        </div>
-    </div>
-  </section>
-
-
-  <script>
-    const password = document.getElementById("password");
-    const password2 = document.getElementById("password2");
-    const passwordMatch = document.getElementById("passwordMatch");
-
-    function validatePassword() {
-        if (password.value !== password2.value) {
-            passwordMatch.textContent = "As senhas não coincidem!";
-            password2.setCustomValidity("As senhas não coincidem!");
-        } else {
-            passwordMatch.textContent = "";
-            password2.setCustomValidity("");
-        }
-    }
-
-    password.addEventListener("input", validatePassword);
-    password2.addEventListener("input", validatePassword);
-
-</script>
-
-
-</body>
-
-</html>
+     
+  </main>
+{% endblock %}

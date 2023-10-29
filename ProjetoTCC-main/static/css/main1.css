@@ -663,6 +663,17 @@ input {
 
 @media (max-width: 767px) {
   .card-4 .card-body {
-    padding: 50px 40px;
+    padding: 37px 5px;
+  }
+  header .my-nav{
+    width: 44%;
+  }
+  .title {
+    text-align: left;
+}
+  img {
+    max-width: 64%;
+    margin-right: 23px;
   }
 }
+

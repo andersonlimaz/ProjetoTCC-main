@@ -7,14 +7,14 @@
 
 <head>
     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <meta name="description" content="Colorlib Templates">
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
 
     <title>Pagina Doe</title>
-    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all"> 
+    <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/main1.css' %}" rel="stylesheet" media="all">
     <!-- <link href="{% static 'css/styleDoe.css' %}" rel="stylesheet" media="all">  -->
@@ -45,12 +45,12 @@
                 setTimeout(function () {
                     loadingMessage.style.display = 'none';
                     console.log("Redirecionando para Pix: ", urlPix);
-                    window.location.href = urlPix; 
-                }, 2000); 
+                    window.location.href = urlPix;
+                }, 2000);
             } else if (tipoPagamento === 'boleto') {
                 loadingMessage.style.display = 'none';
                 console.log("Abrindo o boleto em PDF");
-                window.open(urlBoleto, '_blank'); 
+                window.open(urlBoleto, '_blank');
             }
         }
 
@@ -59,7 +59,35 @@
         confirmButton.innerHTML = '<a href="' + document.getElementById('urlPix').getAttribute('data-url') + '">Confirmar</a>';
     </script>
     <script src="{% static 'js/fotos.js' %}"></script>
-    <style></style>
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .form-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .form {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        @media (max-width: 767px) {
+            .form {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -118,7 +146,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-2"style="margin-bottom: 10px;">
+                        <div class="col-2" style="margin-bottom: 10px;">
                             <div class="input-group">
                                 <label class="label">Forma de Pagamento</label>
                                 <div class="p-t-5">
@@ -134,7 +162,7 @@
                             </div>
                         </div>
                 </div>
-                <div class="card-body"style="margin-top: -50px;">
+                <div class="card-body" style="margin-top: -50px;">
                     <label class="label">Valor</label>
                     <input class="input--style-4" type="text" name="valor" placeholder="Digite Valor" required>
                     <div class="input-group">
@@ -158,7 +186,8 @@
                             <div id="urlPix" href="{% url 'pix/' %}"></div>
                             <div id="urlBoleto" data-url="{% static 'pdf/BOLETO.pdf' %}"></div>
                             <button id="confirmButton" class="btn btn--radius-2 btn--blue" type="submit"
-                                onclick="carregarInformacoes()" style="margin-top: 30px; margin-bottom: -150px;">Confirmar</button>
+                                onclick="carregarInformacoes()"
+                                style="margin-top: 30px; margin-bottom: -150px;">Confirmar</button>
                         </div>
                         </form>
                     </div>
@@ -173,9 +202,15 @@
     <!-- Jquery JS-->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
     <!-- Vendor JS-->
-    <script src="{% static 'vendor/select2/select2.min.js' %}"></script> 
+    <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
     <script src="{% static 'js/global.js' %}"></script>
 </body>
 
 </html>
+{% endblock %}
+{% block rodape %}
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
