@@ -53,6 +53,9 @@ class boleto(TemplateView):
 class Login(TemplateView):
     template_name = "login.html"
 
+class Usuario(TemplateView):
+    template_name = "usuario.html"
+
 
 # Resto do seu código...
 
@@ -172,8 +175,10 @@ def fazerLogin(request):
         try:
             ong = ONG.objects.get(email=email)
             if ong.senha == senha:
+
+                request.session['nome_usuario'] = ong.nome_fantasia
                 # TROCAR PELA PÁGINA A SER CONECTADA.
-                return HttpResponse('Autenticado')
+                return redirect('usuario')
             else:
                 return render(request, 'login.html', {'error_msg': 'Senha inválida.'})
         except ONG.DoesNotExist:
