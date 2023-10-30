@@ -1,37 +1,44 @@
- @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-} 
-
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #fff 
-}
-
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #fff; 
-}
 .container {
-
-    padding-top: 60px;
-    padding-bottom: 60px; 
-}
-
-body {
-    width: 100%;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  
+.input-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+.radio-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+.select--no-search {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
-    margin: 0;
-    padding: 0;
+  }
+  
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+  }
+
+.form-container {
+    border: 1px solid #000;
+    padding: 20px;
+    width: 50%;
+    margin: auto;
+    text-align: left;
 }
