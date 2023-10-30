@@ -7,7 +7,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Colorlib Templates">
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
@@ -16,7 +17,9 @@
     <link href="{% static 'vendor/mdi-font/css/material-design-iconic-font.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'vendor/select2/select2.min.css' %}" rel="stylesheet" media="all">
     <link href="{% static 'css/main1.css' %}" rel="stylesheet" media="all">
-    <!-- <link href="{% static 'css/styleDoe.css' %}" rel="stylesheet" media="all">  -->
+
+
+    <!-- novos -->
     <script>
         var img1 = "{% static 'img/img1.jpg' %}";
         var img2 = "{% static 'img/img2.jpg' %}";
@@ -90,6 +93,24 @@
 </head>
 
 <body>
+    <section class="abt-01">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="heading-wrapper">
+                        <p> </p>
+                        <p> </p>
+                        <br>
+                        <h3>Doe</h3>
+                        <ol>
+                            <li>Home    <i class="far fa-angle-double-right"></i></li>
+                            <li>    Doe</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <header>
         <div class="my-nav">
             <div class="container">
@@ -99,7 +120,7 @@
                             <div class="menu-hamburger"></div>
                         </div>
                         <div class="logo">
-                            <img src="{% static 'img/logo.jpg' %}"class="logo-image">
+                            <img src="{% static 'img/logo.jpg' %}" class="logo-image">
                         </div>
                         <div class="menu-items">
                             <div class="menu">
@@ -177,9 +198,9 @@
                                 <div class="select-dropdown"></div>
                             </div>
                         </div>
-                        <img src="" id="image1" style="display: none;" class="outra-imagem"/>
-                        <img src="" id="image2" style="display: none;" class="outra-imagem"/>
-                        <img src="" id="image3" style="display: none;" class="outra-imagem"/>
+                        <img src="" id="image1" style="display: none;" class="outra-imagem" />
+                        <img src="" id="image2" style="display: none;" class="outra-imagem" />
+                        <img src="" id="image3" style="display: none;" class="outra-imagem" />
                         <div class="p-t-15">
                             <div id="loadingMessage" style="display:none;">Carregando informações...</div>
                             <div id="urlPix" href="{% url 'pix/' %}"></div>
@@ -208,6 +229,79 @@
 </html>
 {% endblock %}
 {% block rodape %}
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="_kl_ds_we">
+                    <div class="head-footer">
+                        <h3>Conecta ONG </h3>
+                        <p>Redes Socias</p>
+                        <ol>
+                            <li><i class="fab fa-facebook-square"></i></li>
+                            <li><i class="fab fa-instagram"></i></li>
+                            <li><i class="fab fa-twitter-square"></i></li>
+                            <li><i class="fab fa-linkedin"></i></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="_kl_ds_we">
+                    <div class="head-footer">
+                        <h3>Empresas Parceiras</h3>
+                        <ul>
+                            <li><i class="fas fa-chevron-right"></i>Crianças Criativas</li>
+                            <li><i class="fas fa-chevron-right"></i>Educação Sem Fronteiras</li>
+                            <li><i class="fas fa-chevron-right"></i>Saúde Infantil Global</li>
+                            <li><i class="fas fa-chevron-right"></i>Crianças Esportivas</li>
+                            <li><i class="fas fa-chevron-right"></i>Crianças Pela Igualdade</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="_kl_ds_we">
+                    <div class="head-footer">
+                        <h3>Acessos Rápidos</h3>
+                        <ul style="color: white;">
+                            <li><a href="{% url 'inicio' %}" style="color: white;">Home</a></li>
+                            <li><a href="{% url 'doe' %}" style="color: white;">Doe</a></li>
+                            <li><a href="{% url 'blog' %}" style="color: white;">Blog</a></li>
+                            <li><a href="{% url 'contato' %}" style="color: white;">Contato</a></li>
+                            <li><a href="{% url 'formulario' %}" style="color: white;">Formulario</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="_kl_ds_we">
+                    <div class="head-footer">
+                        <h3>Nos Encontre</h3>
+                        <ul class="un-hover">
+                            <li><i class="far fa-location"></i>Rua Antônio Macedo, 505 - SP</li>
+                            <li><i class="fas fa-mobile-alt"></i>+55 (11)9999-0000</li>
+                            <li><i class="far fa-envelope"></i>Contato@conectaong.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row _pl_we_sq">
+                    <div class="col-12">
+                        <div class="last-01">
+                            <p>2023 @ Desenvolvido por: Alan Correia - Anderson Brito - Danilo Gregorio - Gabriel
+                                Militão <a href="https://github.com/andersonlimaz/ProjetoTCC-main">Github</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
