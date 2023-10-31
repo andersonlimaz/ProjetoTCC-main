@@ -92,25 +92,27 @@
                   <div class="input-group">
                       <div class="input-box">
                           <label for="firstname"> Nome Fantasia</label>
-                          <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
+                          <input id="firstname" type="text" name="firstname" placeholder="Digite seu nome fantasia" required>
                       </div>
   
                       <div class="input-box">
                           <label for="lastname">Nome Comercial</label>
-                          <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
+                          <input id="lastname" type="text" name="lastname" placeholder="Digite seu nome comercial" required>
                       </div>
                       
                       <div class="input-box">
                           <label for="cnpj">Cnpj</label>
-                          <input id="cnpj" type="tel" name="cnpj" placeholder="(58.636.441/0001-64)" required>
+                          <input id="cnpj" type="tel" name="cnpj" placeholder="Digite o CNPJ (somente números)" required>
+                       
                           
                       </div>
                       
 
-                        <div class="input-box">
-                          <label for="number">Celular</label>
-                          <input id="number" type="number" name="number" placeholder="(xx) xxxx-xxxx" required>
-                      </div>
+                      <div class="input-box">
+                        <label for="number">Celular</label>
+                        <input id="number" type="tel" name="number" placeholder="Digite o Numero de celular  (somente números)"  required>
+                    </div>
+                    
   
                       <div class="input-box">
                           <label for="endereco">Endereço </label>
@@ -172,7 +174,7 @@
   
                           <div class="gender-input">
                               <input id="none" type="radio" name="gender">
-                              <label for="none">educação</label>
+                              <label for="none">Educação</label>
                           </div>
                       </div>
                   </div>
@@ -197,7 +199,7 @@
                              </div>
                             
                   <div class="continue-button">
-                      <button><a href="{% url 'inicio' %}">Cadastra </a> </button>
+                      <button><a href="{% url 'inicio' %}">Cadastrar </a> </button>
   
                       
   
@@ -232,28 +234,46 @@
   
 
 
-  <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: 'Inter', sans-serif;
-        justify-content: center;
-        
-    }
-     
-   
-    #formulario {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh; /* Isso ajusta o formulário para ocupar a altura total da janela. */
+<script>
+    // Função para formatar o número de celular com o DDD
+    function formatPhoneNumber(input) {
+        const number = input.value.replace(/\D/g, ''); // Remove todos os não dígitos
+        if (number.length >= 2) {
+            input.value = `(${number.slice(0, 2)}) ${number.slice(2)}`;
+        }
     }
 
+    const numberInput = document.getElementById('number');
+    numberInput.addEventListener('input', function () {
+        formatPhoneNumber(this);
+    });
+
+</script>
+
+
+
+<script>
+    // Função para formatar o CNPJ
+    function formatCNPJ(input) {
+        let value = input.value.replace(/\D/g, '');
+        if (value.length > 12) {
+            value = value.slice(0, 2) + '.' + value.slice(2, 5) + '.' + value.slice(5, 8) + '/' + value.slice(8, 12) + '-' + value.slice(12, 14);
+        }
+        input.value = value;
+    }
+
+    // Adicione um ouvinte de evento para chamar a função quando o valor do campo muda
+    document.getElementById('cnpj').addEventListener('input', function () {
+        formatCNPJ(this);
+    });
+</script>
+
+<style>
+
+    
 .form {
-    width: 70%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -298,49 +318,38 @@ justify-content: center;}
     font-weight: 500;
     color: #fff;
 }
+    /* Estilo para a seção do formulário */
+    #formulario {
+        background-color: #f5f5f5;
+        padding: 20px;
+    }
 
-.form-header h1::after {
-    content: '';
-    display: block;
-    width: 5rem;
-    height: 0.3rem;
-    background-color: #fd1b5b;
-    margin: 0 auto;
-    position: absolute;
-    border-radius: 10px;
+    /* Estilo para o contêiner do formulário */
+    .container2 {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Estilo para o formulário */
+    .form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* Estilo para o título do formulário */
+    .form-header .title {
+        margin-bottom: 3rem;
+        display: flex;
+    justify-content: center;}
+    
+    
+.input-box input:hover {
+    background-color: #eeeeee75;
 }
-
-
-.input-group {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 1rem 0;
-}
-
-.input-box {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-}
-
-
-
-
-.error-message {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-}
-
-
-.error-message2 {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-}
-
-
 
 .input-box input {
     margin: 0.6rem 0;
@@ -349,10 +358,6 @@ justify-content: center;}
     border-radius: 10px;
     box-shadow: 1px 1px 6px #0000001c;
     font-size: 0.8rem;
-}
-
-.input-box input:hover {
-    background-color: #eeeeee75;
 }
 
 .input-box input:focus-visible {
@@ -366,18 +371,45 @@ input-box label,
     color: #000000c0;
 }
 
-.input-box input::placeholder {
-    color: #000000be;
-}
+    .form-header h1 {
+        font-size: 24px;
+        color: #333;
+    }
 
+    .input-box input::placeholder {
+        color: #000000be;
+    }
+    
+    
+    /* Estilo para os campos de entrada */
+    .input-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
 
-.gender-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.62rem;
-    padding: 0 .5rem;
-}
+    .input-box {
+        width: 100%;
+        margin-bottom: 15px;
+    }
 
+    label {
+        font-weight: bold;
+        display: block;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Estilo para os botões de rádio */
+ 
 .gender-input {
     display: flex;
     align-items: center;
@@ -392,8 +424,28 @@ input-box label,
     font-weight: 600;
     color: #000000c0;
 }
+    /* Estilo para o campo "Sobre a Ong" */
+  
+input-sobre {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
 
-
+    .error-message {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.1rem;
+    }
+    
+    
+    .error-message2 {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1.1rem;
+    }
+    
 .continue-button button {
     width: 100%;
     margin-top: 2.5rem;
@@ -416,42 +468,17 @@ input-box label,
 }
 
 
+    @media (max-width: 768px) {
+        .input-box {
+            width: 100%;
+        }
 
-input-sobre {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 0.62rem;
-    padding: 0 .5rem;
-}
+        .gender-inputs {
+            margin-top: 10px;
+        }
+    }
+</style>
 
-
-@media screen and (max-width: 1330px) {
-    .form-image {
-        display: none;
-    }
-    .container2 {
-        width: 50%;
-    }
-    .form {
-        width: 100%;
-    }
-}
-
-@media screen and (max-width: 1064px) {
-    .container2 {
-        width: 90%;
-        height: auto;
-    }
-    .input-group {
-        flex-direction: column;
-        z-index: 5;
-        padding-right: 5rem;
-        max-height: 10rem;
-        overflow-y: scroll;
-        flex-wrap: nowrap;
-    }
-
-  </style>
   
   </body>
   
