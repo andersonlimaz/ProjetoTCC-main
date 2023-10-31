@@ -41,6 +41,15 @@
 /* ==========================================================================
    #Header
    ========================================================================== */
+header .nav-items {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 100%;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  align-items: center;
+}
 
 header .my-nav {
   position: fixed;
@@ -200,19 +209,19 @@ h6 {
 }
 
 .bg-gra-01 {
-  background: -webkit-gradient(linear, left bottom, left top, from(#fbc2eb), to(#ffffff));
-  background: -webkit-linear-gradient(bottom, #fbc2eb 0%, #ffffff 100%);
-  background: -moz-linear-gradient(bottom, #fbc2eb 0%, #ffffff 100%);
-  background: -o-linear-gradient(bottom, #fbc2eb 0%, #ffffff 100%);
-  background: linear-gradient(to top, #fbc2eb 0%, #ffffff 100%);
+  background: -webkit-gradient(linear, left bottom, left top, from(#ffffff), to(#ffffff));
+  background: -webkit-linear-gradient(bottom, #ffffff 0%, #ffffff 100%);
+  background: -moz-linear-gradient(bottom, #ffffff 0%, #ffffff 100%);
+  background: -o-linear-gradient(bottom, #ffffff 0%, #ffffff 100%);
+  background: linear-gradient(to top, #ffffff 0%, #ffffff 100%);
 }
 
 .bg-gra-02 {
-  background: -webkit-gradient(linear, left bottom, right top, from(#e0b9b9), to(#ffffff));
+  background: -webkit-gradient(linear, left bottom, right top, from(#ffffff), to(#ffffff));
   background: -webkit-linear-gradient(bottom left, #ececec 0%, rgb(255, 255, 255) 100%);
   background: -moz-linear-gradient(bottom left, #ffffff 0%, #ffffff 100%);
   background: -o-linear-gradient(bottom left, #fcfcfc 0%, #ffffff 100%);
-  background: linear-gradient(to top right, #dfa5b8 0%, #f3f3f3 100%);
+  background: linear-gradient(to top right, #ffffff 0%, #f3f3f3 100%);
 }
 
 /* ==========================================================================
@@ -683,24 +692,28 @@ input {
   margin-bottom: 0.625rem;
   text-transform: uppercase;
 }
-  .abt-01 .heading-wrapper ol li {
-    display: inline-block;
-    font-size: 1rem;
-    color: #ddd;
-  }
 
-
-.fa-angle-double-right:before {
-  content: "\f101";
-}
-.abt-01 .heading-wrapper ol li:nth-child(2) {
-  color: #fff;
-}
 .abt-01 .heading-wrapper ol li {
   display: inline-block;
   font-size: 1rem;
   color: #ddd;
 }
+
+
+.fa-angle-double-right:before {
+  content: "\f101";
+}
+
+.abt-01 .heading-wrapper ol li:nth-child(2) {
+  color: #fff;
+}
+
+.abt-01 .heading-wrapper ol li {
+  display: inline-block;
+  font-size: 1rem;
+  color: #ddd;
+}
+
 .abt-01 .heading-wrapper {
   position: relative;
   margin: 1.25rem 0;
@@ -759,9 +772,10 @@ input {
     width: 163%;
     padding-bottom: 140px;
   }
+
   .p-t-130 {
     padding-top: 80px;
-}
+  }
 }
 
 body {
