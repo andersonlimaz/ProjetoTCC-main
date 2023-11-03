@@ -159,6 +159,10 @@ h5, .h5 {
   font-size: 1.25rem;
 }
 
+.input-group h5 {
+    color: var(--bs-gray-100);
+}
+
 h6, .h6 {
   font-size: 1rem;
 }

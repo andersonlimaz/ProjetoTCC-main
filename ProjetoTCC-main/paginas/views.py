@@ -175,10 +175,12 @@ def fazerLogin(request):
         try:
             ong = ONG.objects.get(email=email)
             if ong.senha == senha:
+                request.session['nome_usuario'] = ong.nome_comercial
 
-                request.session['nome_usuario'] = ong.nome_fantasia
-                # TROCAR PELA PÁGINA A SER CONECTADA.
-                return redirect('usuario')
+                pagamentos = Pagamento.objects.filter(ong_parceiras=ong.nome_comercial)
+
+                # return redirect('usuario')
+                return render(request, 'usuario.html', {'pagamentos': pagamentos})
             else:
                 return render(request, 'login.html', {'error_msg': 'Senha inválida.'})
         except ONG.DoesNotExist:
